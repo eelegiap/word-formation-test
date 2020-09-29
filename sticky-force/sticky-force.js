@@ -1,5 +1,5 @@
 var width = 1200,
-    height = 800;
+    height = 600;
 
 var force = d3.layout.force()
     .size([width, height])

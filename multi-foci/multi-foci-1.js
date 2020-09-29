@@ -45,13 +45,6 @@ var g = svg.selectAll("g")
     .data(nodes).enter()
     .append("g");
     
-// var circle = svg.selectAll("circle")
-//     .data(nodes)
-//     .enter()
-//     .append("circle")
-//     .attr("r", function(d) { return d.radius; })
-//     .style("fill", function(d) { return d.color; })
-//     .call(force.drag);
 var circle = g
     .append("circle")
     .attr("r", function(d) { return d.radius; })
