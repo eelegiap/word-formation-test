@@ -1,0 +1,79 @@
+{
+    "nodes": [
+        {"x": 932, "y": 179, "txt": "подойти", "count": 262.84, "level": "2I"}, {"x": 315, "y": 130, "txt": "поднять", "count": 262.53, "level": "2I"}, {"x": 760, "y": 780, "txt": "подняться", "count": 209.95, "level": "2I"}, {"x": 375, "y": 992, "txt": "подобный", "count": 167.23, "level": "3A"}, {"x": 251, "y": 82, "txt": "подходить", "count": 134.36, "level": "2I"}, {"x": 417, "y": 27, "txt": "подниматься", "count": 102.41, "level": "2I"}, {"x": 603, "y": 654, "txt": "подождать", "count": 92.92, "level": "1E"}, {"x": 218, "y": 982, "txt": "поднимать", "count": 77.98, "level": "2I"}, {"x": 167, "y": 89, "txt": "подарок", "count": 70.33, "level": "1E"}, {"x": 186, "y": 392, "txt": "подъезд", "count": 65.25, "level": "1E"}, {"x": 448, "y": 277, "txt": "подарить", "count": 64.94, "level": "1E"}, {"x": 417, "y": 223, "txt": "подтвердить", "count": 58.15, "level": "2I"}, {"x": 550, "y": 539, "txt": "подавать", "count": 56.07, "level": "2I"}
+            ],
+    "links": [
+        {
+            "source": 0,
+            "target": 1
+        },
+        {
+            "source": 0,
+            "target": 2
+        },
+        {
+            "source": 2,
+            "target": 0
+        },
+        {
+            "source": 1,
+            "target": 3
+        },
+        {
+            "source": 3,
+            "target": 2
+        },
+        {
+            "source": 3,
+            "target": 4
+        },
+        {
+            "source": 4,
+            "target": 5
+        },
+        {
+            "source": 5,
+            "target": 6
+        },
+        {
+            "source": 5,
+            "target": 7
+        },
+        {
+            "source": 6,
+            "target": 7
+        },
+        {
+            "source": 6,
+            "target": 8
+        },
+        {
+            "source": 7,
+            "target": 8
+        },
+        {
+            "source": 9,
+            "target": 4
+        },
+        {
+            "source": 9,
+            "target": 11
+        },
+        {
+            "source": 9,
+            "target": 10
+        },
+        {
+            "source": 10,
+            "target": 11
+        },
+        {
+            "source": 11,
+            "target": 12
+        },
+        {
+            "source": 12,
+            "target": 10
+        }
+    ]
+}
