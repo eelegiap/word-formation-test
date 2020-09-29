@@ -1,4 +1,4 @@
-var width = 1250,
+var width = 1150,
     height = 600,
     padding = 6, // separation between nodes
     maxRadius = 12;
