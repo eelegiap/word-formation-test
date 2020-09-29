@@ -1,5 +1,5 @@
 var width = 1250,
-    height = 500,
+    height = 600,
     padding = 6, // separation between nodes
     maxRadius = 12;
 
@@ -19,7 +19,7 @@ d3.json("multi-foci-data.json", function (error, graph) {
     for (const d of graph) {
         console.log('d', d);
         nodes.push({
-            radius: d.radius * 90,
+            radius: d.radius * 60,
             color: color(d.color_id),
             cx: x(d.color_id),
             cy: height / 2,
