@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v4.js"></script>
+<title>Count vs. rank</title>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h1 style="color:gray">Comparing count vs. rank values in the Clancy database</h1>
+        <p style="color:gray">Is rank or count a better indicator of a word's frequency? I think count represents the
+          occurrences of the word / 100,000 words, and rank is supposed to be the inverse of that, but rank/count don't always
+          seem to have a perfectly inverse relationship. In addition, it seems like rank will change as we add more words to the database</p>
+        <h2>"род" root by <span style="color: blue">COUNT (blue)</span> and <span style="color:red">RANK (red)</span>
+        </h2>
+        <div id="chart"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h2>"знак" root by <span style="color: blue">COUNT (blue)</span> and <span style="color:red">RANK (red)</span>
+        </h2>
+        <div id="znak"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h2>"пред" prefix by <span style="color: blue">COUNT (blue)</span> and <span style="color:red">RANK (red)</span>
+        </h2>
+        <div id="pred"></div>
+      </div>
+    </div>
+  </div>
+  <!-- Create a div where the graph will take place -->
+
+  <script src="circle-chart.js"></script>
+  <script src="znak-circle-chart.js"></script>
+  <script src="pred-circle-chart.js"></script>
+
+</body>
