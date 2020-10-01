@@ -1,40 +1,45 @@
 <!doctype html>
+<meta charset="utf-8">
+
 <html>
 
 <head>
-    <title></title>
+    <title>Navigation</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="//d3js.org/d3.v3.min.js"></script>
+
     <style>
-        .navigation {
+        .header {
             padding: 50px;
         }
-        .body {
-            font-family: "Times New Roman", Times, serif;
+        .navigation {
+            padding-left: 50px;
         }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <div class="row">
+        <div class="row header">
             <div class="col">
-                <h1>Potential visualization options for the Word Formation tool</h1>
+                <h1 style="background-color: whitesmoke; width: fit-content">Visualization options for the Word Formation tool</h1>
             </div>
         </div>
         <div class="row navigation">
-            <div class="col-md-4">
+            <div class="col-md-6">
+                <h2>Visualizations of word count across prefix/root/suffix </h2>
                 <h2><a href="/word-formation-test/bubble-float/bubble-float.html">Bubble float</a></h2>
-            </div>
-            <div class="col-md-4">
                 <h2><a href="/word-formation-test/sticky-force/sticky-force.html">Sticky force</a></h2>
-            </div>
-            <div class="col-md-4">
                 <h2><a href="/word-formation-test/multi-foci/multi-foci.html">Multi foci</a></h2>
+            </div>
+            <div class="col-md-6">
+                <h2>Comparing count and rank in the database</h2>
+                <h2><a href="/word-formation-test/circle-chart/circle-chart.html">Comparison chart</a></h2>
             </div>
         </div>
     </div>
