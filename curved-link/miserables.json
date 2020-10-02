@@ -1,0 +1,121 @@
+{
+  "nodes": [
+    {
+      "id": "001",
+      "text": "сантиметр",
+      "count": 24.3,
+      "level": "2I",
+      "group": 1
+    },
+    {
+      "id": "002",
+      "text": "антибиотик",
+      "count": 16.83,
+      "level": "2I",
+      "group": 1
+    },
+    {
+      "id": "003",
+      "text": "антисоветский",
+      "count": 8.94,
+      "level": "3AU",
+      "group": 1
+    },
+    {
+      "id": "004",
+      "text": "античный",
+      "count": 6.98,
+      "level": "3AU",
+      "group": 1
+    },
+    {
+      "id": "005",
+      "text": "антисемитизм",
+      "count": 5.75,
+      "level": "3AU",
+      "group": 1
+    },
+    {
+      "id": "006",
+      "text": "антихрист",
+      "count": 4.41,
+      "level": "3AU",
+      "group": 1
+    },
+    {
+      "id": "007",
+      "text": "антисемит",
+      "count": 3.49,
+      "level": "3AU",
+      "group": 1
+    },
+    {
+      "id": "008",
+      "text": "антикварный",
+      "count": 3.43,
+      "level": "3AU",
+      "group": 1
+    },
+    {
+      "id": "009",
+      "text": "антисептический",
+      "count": 3.37,
+      "level": "3AU",
+      "group": 1
+    },
+    {
+      "id": "010",
+      "text": "антилопа",
+      "count": 2.94,
+      "level": "3AU",
+      "group": 1
+    }
+  ],
+  "links": [
+    {
+      "source": "002",
+      "target": "001",
+      "value": 250
+    },
+    {
+      "source": "003",
+      "target": "001",
+      "value": 50
+    },
+    {
+      "source": "004",
+      "target": "001",
+      "value": 100
+    },
+    {
+      "source": "005",
+      "target": "001",
+      "value": 250
+    },
+    {
+      "source": "006",
+      "target": "001",
+      "value": 50
+    },
+    {
+      "source": "007",
+      "target": "001",
+      "value": 100
+    },
+    {
+      "source": "008",
+      "target": "001",
+      "value": 250
+    },
+    {
+      "source": "009",
+      "target": "001",
+      "value": 50
+    },
+    {
+      "source": "010",
+      "target": "001",
+      "value": 100
+    }
+  ]
+}
