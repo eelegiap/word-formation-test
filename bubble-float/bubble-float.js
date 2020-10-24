@@ -3,32 +3,32 @@
 
 
 var width = 1200,
-    height = 800,
-    padding = 1.5, // separation between same-color nodes
-    clusterPadding = 6, // separation between different-color nodes
-    maxRadius = 12;
+height = 1000,
+padding = 1.5, // separation between same-color nodes
+clusterPadding = 6, // separation between different-color nodes
+maxRadius = 12;
 
 var color = d3.scale.ordinal()
-      .range(["#7A99AC", "#E4002B"]);
+.range(["#7A99AC", "#E4002B"]);
 
 
 
-d3.text("word_groups.csv", function(error, text) {
-  if (error) throw error;
-  var colNames = "text,size,group\n" + text;
-  var data = d3.csv.parse(colNames);
+d3.text("yasnadata.csv", function (error, text) {
+if (error) throw error;
+var colNames = "text,size,pos,level,translation\n" + text;
+var data = d3.csv.parse(colNames);
 
-  data.forEach(function(d) {
+data.forEach(function (d) {
     d.size = +d.size;
-  });
+});
 
 
 //unique cluster/group id's
 var cs = [];
-data.forEach(function(d){
-        if(!cs.contains(d.group)) {
-            cs.push(d.group);
-        }
+data.forEach(function (d) {
+    if (!cs.contains(d.group)) {
+        cs.push(d.group);
+    }
 });
 
 var n = data.length, // total number of nodes
@@ -37,8 +37,8 @@ var n = data.length, // total number of nodes
 //create clusters and nodes
 var clusters = new Array(m);
 var nodes = [];
-for (var i = 0; i<n; i++){
-    nodes.push(create_nodes(data,i));
+for (var i = 0; i < n; i++) {
+    nodes.push(create_nodes(data, i));
 }
 
 var force = d3.layout.force()
@@ -55,48 +55,103 @@ var svg = d3.select("#vis").append("svg")
 
 // try making color gradient
 var color = d3.scale.linear()
-  .domain([0, 9])  
-  .range(["yellow", "tomato"]); 
+    .domain([0, 9])
+    .range(["yellow", "tomato"]);
 // try making color gradient
 
+// Define the div for the tooltip
+var div = d3.select("body").append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0);
 
 var node = svg.selectAll("circle")
     .data(nodes)
-    .enter().append("g").call(force.drag);
+    .enter().append("g")
+    // .on("mouseover", mouseover)
+    // .on("mouseout", mouseout)
+    .call(force.drag);
 
 
 node.append("circle")
-    // .style("fill", function (d) {
-    // return color(d.cluster);
-    // })
-    // .attr("fill", "url(#svgGradient)")
-    .attr('fill',function(d,i) { return color(i); })
-    .attr("r", function(d){return d.radius});
-    
-
+    .attr("opacity", .9)
+    // .attr('fill', function (d, i) { return color(i); })
+    .attr('fill',function(d) {
+        if (d.level == "1E") {
+            color = "#32CD32"
+        }
+        if (d.level == "2I") {
+            color = "blue"
+        }
+        if (d.level == "3A") {
+            color = "purple"
+        }
+        if (d.level == "4SU") {
+            color = "orange"
+        }
+        return color;
+    })
+    .attr("r", function (d) { return d.radius });
 node.append("text")
-      .attr("dy", ".3em")
-      .style("text-anchor", "middle")
-      .text(function(d) { return d.text});
+    .attr("dy", ".3em")
+    .style("text-anchor", "middle")
+    .style("font-size", function (d) {return Math.log(d.radius) * 5 + "px"; })
+    .text(function (d) { return d.text });
+    
+node.on("mouseover", function (d, i) {
+        var string = d3.select(this).attr("transform");
+        var translate = string.substring(string.indexOf("(") + 1, string.indexOf(")")).split(",");
+        div.transition()
+            .duration(100)
+            .style("opacity", .9);
+        var f = d3.format(".1f");
+        div.html("Word: <b>" + d.text + "</b><br/>" + 
+                "Part of speech: " + d.pos + "<br/>" +
+                "Translation: " + d.translation + "<br/>" +
+                "Count: " + f(d.radius) + "<br/>" +
+                "Level: " + d.level)
+            .style("font-size", "16px")
+            .style("left", (parseFloat(translate[0]) - .25 * d.radius) + "px")
+            .style("top", (parseFloat(translate[1])) + "px");
+        // change classes
+        d3.selectAll("g")
+            .classed("selected", function (e, j) { return j == i; })
+            .classed("notselected", function (e, j) { return j != i; });
+    })
+    .on("mouseout", function (d) {
+        div.transition()
+            .duration(100)
+            .style("opacity", 0);
+        d3.selectAll("g").attr("class", "selected");
+    });;
 
-      //   .text(function(d) { return d.text.substring(0, d.radius / 3); });
+// function mouseover() {
+//     d3.select(this).select("circle").transition()
+//         .duration(200)
+//         .attr("opacity", 1);
+//   }
+
+//   function mouseout() {
+//     d3.select(this).select("circle").transition()
+//         .duration(750)
+//   }
 
 
-
-
-function create_nodes(data,node_counter) {
-    console.log(data[node_counter].size);
-  var i = cs.indexOf(data[node_counter].group),
-      r = Math.sqrt((i + 1) / m * -Math.log(Math.random())) * maxRadius,
-      d = {
-        cluster: i,
-        radius: data[node_counter].size*1.5/5,
-        text: data[node_counter].text,
-        x: Math.cos(i / m * 2 * Math.PI) * 200 + width / 2 + Math.random(),
-        y: Math.sin(i / m * 2 * Math.PI) * 200 + height / 2 + Math.random()
-      };
-  if (!clusters[i] || (r > clusters[i].radius)) clusters[i] = d;
-  return d;
+function create_nodes(data, node_counter) {
+    console.log(node_counter);
+    var i = cs.indexOf(data[node_counter].group),
+        r = Math.sqrt((i + 1) / m * -Math.log(Math.random())) * maxRadius,
+        d = {
+            cluster: i,
+            radius: Math.log(data[node_counter].size)*20,
+            text: data[node_counter].text,
+            pos: data[node_counter].pos,
+            level: data[node_counter].level,
+            translation: data[node_counter].translation,
+            x: Math.cos(i / m * 2 * Math.PI) * 200 + width / 2 + Math.random(),
+            y: Math.sin(i / m * 2 * Math.PI) * 200 + height / 2 + Math.random()
+        };
+    if (!clusters[i] || (r > clusters[i].radius)) clusters[i] = d;
+    return d;
 };
 
 
@@ -104,10 +159,10 @@ function create_nodes(data,node_counter) {
 function tick(e) {
     node.each(cluster(10 * e.alpha * e.alpha))
         .each(collide(.5))
-    .attr("transform", function (d) {
-        var k = "translate(" + d.x + "," + d.y + ")";
-        return k;
-    })
+        .attr("transform", function (d) {
+            var k = "translate(" + d.x + "," + d.y + ")";
+            return k;
+        })
 
 }
 
@@ -159,9 +214,9 @@ function collide(alpha) {
 }
 });
 
-Array.prototype.contains = function(v) {
-    for(var i = 0; i < this.length; i++) {
-        if(this[i] === v) return true;
-    }
-    return false;
+Array.prototype.contains = function (v) {
+for (var i = 0; i < this.length; i++) {
+    if (this[i] === v) return true;
+}
+return false;
 };

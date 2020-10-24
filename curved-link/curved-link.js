@@ -25,7 +25,7 @@ var simulation = d3.forceSimulation()
             //     return 100;
             // }
         })
-        .strength(0.5))
+        .strength(0.33))
     .force("charge", d3.forceManyBody())
     .force("center", d3.forceCenter(width / 2, height / 2));
 

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<head>
+<title>Force Editor</title>
+
+<style>
+
+	.link {
+		stroke: #bbb;
+		stroke-width: 1px;
+	}
+
+	.node {
+		cursor: move;
+		fill: #000;
+	}
+
+	.node.fixed {
+		fill: #f00;
+	}
+
+	</style>
+
+	<script src="http://d3js.org/d3.v3.min.js"></script>
+
+</head>
+	
+	
+	<body>
+	
+	<script>
+		//declare variables
+		var margin = {top: -5, right: -5, bottom: -5, left: -5},
+			width = "960",
+			height = "500";
+
+		var zoom = d3.behavior.zoom()
+		    .scaleExtent([1, 10])
+		    .on("zoom", zoomed);
+
+		//create force layout
+		var force = d3.layout.force()
+		    .charge(-100)
+		    .linkDistance(60)
+		    .size([960, 500])
+		    .on("tick", tick);
+
+		var drag = force.drag()
+    		.on("dragstart", dragstart);
+
+		var svg = d3.select("body").append("svg")
+		    .attr("width", width)
+			.attr("height", height)
+			.append("g")
+			.attr("transform", "translate(" + margin.left + "," + margin.right + ")")
+			.call(zoom)
+			.on("dblclick.zoom", null);
+
+		var rect = svg.append("rect")
+			.attr("width", width)
+			.attr("height", height)
+			.style("fill", "none")
+			.style("pointer-events", "all");
+
+		var link = svg.selectAll(".link"),
+   			node = svg.selectAll(".node");
+
+		d3.json("data.json", function(error, data) {
+			force
+				.nodes(data.nodes)
+				.links(data.links)
+				.start();
+
+			link = link.data(data.links)
+				.enter().append("line")
+				.attr("class", "link");
+
+			node = node.data(data.nodes)
+				.enter().append("g")
+				.attr("class", "node")
+				.on("dblclick", dblclick)
+				.call(drag);
+
+
+			node.append("circle")
+				.attr("r", 6)
+				
+				
+			node.append("text")
+				.attr("dx", 12)
+				.attr("dy", ".35em")
+				.text(function(d) { return d.name }); 
+
+		});
+
+		function tick() {
+			link.attr("x1", function(d) { return d.source.x; })
+				.attr("y1", function(d) { return d.source.y; })
+				.attr("x2", function(d) { return d.target.x; })
+				.attr("y2", function(d) { return d.target.y; });
+
+			node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+		}
+
+		function zoomed() {
+			svg.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+		}
+
+		function dblclick(d) {
+			d3.select(this).classed("fixed", d.fixed = false);
+		}
+
+		function dragstart(d) {
+			d3.event.sourceEvent.stopPropagation();
+			d3.select(this).classed("fixed", d.fixed = true);
+		}
+
+	</script>
+
+	</body>
+</html>
