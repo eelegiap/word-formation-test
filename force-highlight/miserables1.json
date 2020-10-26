@@ -1,13 +1,13 @@
 {
     "nodes": [
       {"id": "Paige", "group": 1},
-      {"id": "Kathleen", "group": 2},
-      {"id": "Alyssa", "group": 3},
-      {"id": "Denisse", "group": 4}
+      {"id": "Kathleen", "group": 1},
+      {"id": "Alyssa", "group": 1},
+      {"id": "Denisse", "group": 1}
     ],
     "links": [
       {"source": "Paige", "target": "Kathleen", "value": 1},
-      {"source": "Alyssa", "target": "Kathleen", "value": 8},
-      {"source": "Denisse", "target": "Kathleen", "value": 10}
+      {"source": "Paige", "target": "Alyssa", "value": 8},
+      {"source": "Paige", "target": "Denisse", "value": 100}
     ]
   }

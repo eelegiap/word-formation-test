@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <!-- https://bl.ocks.org/FrissAnalytics/15d253b647fa81f2bd1498132a007f12 -->
 <meta charset="utf-8">
+<title>Force Hover</title>
 <style>
 
 	.link {
@@ -31,8 +32,11 @@
 
 </style>
 <body>
+  <h1>Force highlight chart for "говор" root.</h1>
+  <h2>Distance from center is correlated with count (less common words are farther away. Words are colored by level.</h2>
+  <svg width="1200" height="700"></svg>
 </body>
-<svg width="960" height="700"></svg>
+
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.24.0/d3-legend.min.js"></script>
 <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
@@ -63,20 +67,51 @@ var tooltip = d3.select("body")
 	.style("opacity", 0);
   
   
-d3.json("miserables1.json", function(error, graph) {
+d3.json("govor_data.json", function(error, graph) {
   if (error) throw error;
  	const svg = d3.select('svg'),
         width = +svg.attr('width'),
   			height = +svg.attr('height');
-    
+  var total = 0
+  // find average
+  for (d of graph.nodes) {
+    total += parseFloat(d.count);
+  }
+  var mean = total / graph.nodes.length;
 
-  
-//  const width = 960;
-//   const height = 700;
+  // find standard dev
+  var variance_sum = 0;
+  for (d of graph.nodes) {
+    var count = parseFloat(d.count);
+    variance_sum += (count - mean)**2;
+  }
+  var variance = variance_sum / graph.nodes.length;
+  var std_dev = Math.sqrt(variance);
+
+  // calc z-scores of all counts
+  var z_scores = []
+  for (d of graph.nodes) {
+    var z_score = (parseFloat(d.count) - mean) / std_dev;
+    z_scores.push(z_score);
+  }
+  // make 0 to 1
+  var normalized_values = []
+  var min = Math.min.apply(Math,z_scores);
+  var max = Math.max.apply(Math,z_scores);
+
+  for (i = 0; i < graph.nodes.length; i++) {
+    var normalized_val = (z_scores[i] - min) / (max - min);
+    normalized_values.push(normalized_val);
+  }
+  console.log(normalized_values);
 
   const simulation = d3.forceSimulation()
     .nodes(graph.nodes)
-    .force('link', d3.forceLink().id(d => d.id))
+    .force('link', d3.forceLink().id(d => d.id)
+      .distance(function(d,i) {
+        console.log(1/(normalized_values[i]+.01));
+        return 3/(normalized_values[i]+.01)
+      }))
     .force('charge', d3.forceManyBody())
     .force('center', d3.forceCenter(width / 2, height / 2))
     .on('tick', ticked);
@@ -84,7 +119,7 @@ d3.json("miserables1.json", function(error, graph) {
   simulation.force('link')
     .links(graph.links);
 
-  const R = 6;
+  const R = 15;
 
  
 
@@ -95,26 +130,26 @@ d3.json("miserables1.json", function(error, graph) {
 
   link  
     .attr('class', 'link')
-  	.on('mouseover.tooltip', function(d) {
-      	tooltip.transition()
-        	.duration(300)
-        	.style("opacity", .8);
-      	tooltip.html("Source:"+ d.source.id + 
-                     "<p/>Target:" + d.target.id +
-                    "<p/>Strength:"  + d.value)
-        	.style("left", (d3.event.pageX) + "px")
-        	.style("top", (d3.event.pageY + 10) + "px");
-    	})
-    	.on("mouseout.tooltip", function() {
-	      tooltip.transition()
-	        .duration(100)
-	        .style("opacity", 0);
-	    })
-  		.on('mouseout.fade', fade(1))
-	    .on("mousemove", function() {
-	      tooltip.style("left", (d3.event.pageX) + "px")
-	        .style("top", (d3.event.pageY + 10) + "px");
-	    });
+  	// .on('mouseover.tooltip', function(d) {
+      // 	tooltip.transition()
+      //   	.duration(300)
+      //   	.style("opacity", .8);
+      // 	tooltip.html("Source:"+ d.source.id + 
+      //                "<p/>Target:" + d.target.id +
+      //               "<p/>Strength:"  + d.value)
+      //   	.style("left", (d3.event.pageX) + "px")
+      //   	.style("top", (d3.event.pageY + 10) + "px");
+    	// })
+    	// .on("mouseout.tooltip", function() {
+	    //   tooltip.transition()
+	    //     .duration(100)
+	    //     .style("opacity", 0);
+	    // })
+  		// .on('mouseout.fade', fade(1))
+	    // .on("mousemove", function() {
+	    //   tooltip.style("left", (d3.event.pageX) + "px")
+	    //     .style("top", (d3.event.pageY + 10) + "px");
+	    // });
 ;
 
   let node = svg.selectAll('.node')
@@ -128,14 +163,37 @@ d3.json("miserables1.json", function(error, graph) {
 
   node.append('circle')
     .attr('r', R)
-  	.attr("fill", function(d) { return color(d.group);}) 	
+  	.attr("fill", function(d,i) { 
+      if (i == 0) {
+        return "white";
+      }
+      if (d.level == "1E") {
+            color = "#32CD32"
+        }
+        if (d.level == "2I") {
+            color = "blue"
+        }
+        if (d.level == "3A") {
+            color = "purple"
+        }
+        if (d.level == "4SU") {
+            color = "orange"
+        }
+        return color;
+      // return color(d.group);
+    }) 	
     .on('mouseover.tooltip', function(d) {
       	tooltip.transition()
         	.duration(300)
         	.style("opacity", .8);
-      	tooltip.html("Name:" + d.id + "<p/>group:" + d.group)
+        tooltip.html("<b>Word: </b>" + d.id + "<br>" +
+                     "<b>Translation: </b>" + d.translation + "<br>" + 
+                     "<b>POS: </b>" + d.pos + "<br>" +
+                     "<b>Count: </b>" + d.count + "<br>" +
+                     "<b>Level: </b>" + d.level)
         	.style("left", (d3.event.pageX) + "px")
-        	.style("top", (d3.event.pageY + 10) + "px");
+          .style("top", (d3.event.pageY + 10) + "px")
+          .style("padding", "5px");
     	})
   	.on('mouseover.fade', fade(0.1))
     .on("mouseout.tooltip", function() {
@@ -194,8 +252,8 @@ function releasenode(d) {
     linkedByIndex[`${d.source.index},${d.target.index}`] = 1;
   });
 
-  console.log("linkedByIndex");
-  console.log(linkedByIndex);
+  // console.log("linkedByIndex");
+  // console.log(linkedByIndex);
  
  
   function isConnected(a, b) {
@@ -205,12 +263,12 @@ function releasenode(d) {
   function fade(opacity) {
     
     return d => {
-      console.log("fade");
-      console.log(d);
+      // console.log("fade");
+      // console.log(d);
       node.style('stroke-opacity', function (o) {
         
-         console.log("isConnected",d , o);
-         console.log(isConnected(d, o));
+        //  console.log("isConnected",d , o);
+        //  console.log(isConnected(d, o));
         
         const thisOpacity = isConnected(d, o) ? 1 : opacity;
         this.setAttribute('fill-opacity', thisOpacity);
@@ -225,20 +283,20 @@ function releasenode(d) {
   .domain([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
 
 
-svg.append("g")
-  .attr("class", "legendSequential")
-  .attr("transform", "translate("+(width-140)+","+(height-300)+")");
+// svg.append("g")
+//   .attr("class", "legendSequential")
+//   .attr("transform", "translate("+(width-140)+","+(height-300)+")");
 
-var legendSequential = d3.legendColor()
-    .shapeWidth(30)
-    .cells(11)
-    .orient("vertical")
-		.title("Group number by color:")
-		.titleWidth(100)
-    .scale(sequentialScale) 
+// var legendSequential = d3.legendColor()
+//     .shapeWidth(30)
+//     .cells(11)
+//     .orient("vertical")
+// 		.title("Group number by color:")
+// 		.titleWidth(100)
+//     .scale(sequentialScale) 
 
-svg.select(".legendSequential")
-  .call(legendSequential); 
+// svg.select(".legendSequential")
+//   .call(legendSequential); 
 
   
 })
