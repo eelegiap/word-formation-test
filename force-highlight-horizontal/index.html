@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<!-- https://bl.ocks.org/Kcnarf/91c5e84bed1ba6b1541deaa5d5f4f258 -->
+<meta charset="utf-8">
+<title>Force Horizontal View</title>
+<style>
+  circle {
+    stroke-width: 1.5px;
+  }
+
+  line {
+    stroke: #999;
+  }
+</style>
+
+<body>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.5.1/dat.gui.min.js"></script>
+  <script>
+    var width = 1200,
+      height = 500,
+      radius = 15;
+    // var fill = d3.scale.linear().domain([1, 150]).range(['lightgreen', 'pink']);
+    var drag = d3.drag();
+    var simulation = d3.forceSimulation()
+    .force('charge', d3.forceManyBody().strength(-30).distanceMin(5).distanceMax(100));
+
+    var svg = d3.select("body").append("svg")
+      .attr("width", width)
+      .attr("height", height);
+
+    svg.append("line")
+      .attr("x1", 0)
+      .attr("y1", height / 2)
+      .attr("x2", width)
+      .attr("y2", height / 2)
+      .style("stroke", "lightgrey");
+
+    var tooltip = svg.append("g")
+      .attr("transform", "translate(" + [width / 2, 50] + ")")
+      .style("opacity", 0);
+    var titles = tooltip.append("g").attr("transform", "translate(" + [-5, 0] + ")")
+    // titles.append("text").attr("text-anchor", "end").text("stem(fr):");
+    titles.append("text")
+      .attr("text-anchor", "end")
+      .attr("transform", "translate(" + [0, 0] + ")")
+      .text("word:");
+    titles.append("text")
+      .attr("text-anchor", "end")
+      .attr("transform", "translate(" + [0, 15] + ")")
+      .text("translation:");
+    titles.append("text")
+      .attr("text-anchor", "end")
+      .attr("transform", "translate(" + [0, 30] + ")")
+      .text("rank:");
+    titles.append("text")
+      .attr("text-anchor", "end")
+      .attr("transform", "translate(" + [0, 45] + ")")
+      .text("level:");
+    var values = tooltip.append("g").attr("transform", "translate(" + [5, 0] + ")")
+    var id = values.append("text");
+    id.attr("text-anchor", "start");
+    var trans = values.append("text");
+    trans.attr("text-anchor", "start")
+      .attr("transform", "translate(" + [0, 15] + ")");
+    var count = values.append("text");
+    count.attr("text-anchor", "start")
+      .attr("transform", "translate(" + [0, 30] + ")");
+    var level = values.append("text");
+    level.attr("text-anchor", "start")
+      .attr("transform", "translate(" + [0, 45] + ")");
+
+    d3.json("misyl_data.json", function (error, graph) {
+
+      var total_word_count = graph.nodes.length;
+      d3.select("#count").text(total_word_count);
+
+      const svg = d3.select('svg'),
+        width = +svg.attr('width'),
+        height = +svg.attr('height');
+
+      var val_total = 0
+      // find average
+      for (d of graph.nodes) {
+        val_total += parseFloat(d.count);
+      }
+      var mean = val_total / graph.nodes.length;
+
+      // find standard dev
+      var variance_sum = 0;
+      for (d of graph.nodes) {
+        var count = parseFloat(d.count);
+        variance_sum += (count - mean) ** 2;
+      }
+      var variance = variance_sum / graph.nodes.length;
+      var std_dev = Math.sqrt(variance);
+
+      // calc z-scores of all counts
+      var z_scores = []
+      for (d of graph.nodes) {
+        var z_score = (parseFloat(d.count) - mean) / std_dev;
+        z_scores.push(z_score);
+      }
+      // make 0 to 1
+      var normalized_values = []
+      var min = Math.min.apply(Math, z_scores);
+      var max = Math.max.apply(Math, z_scores);
+
+      for (i = 0; i < graph.nodes.length; i++) {
+        var normalized_val = (z_scores[i] - min) / (max - min);
+        normalized_values.push(normalized_val);
+      }
+      normalized_values.sort().reverse();
+
+      // make data
+      newdata = graph.nodes.map(function (d, i) {
+        if (i == 0) {
+          scaled_x = Math.log10(1 / (normalized_values[i]))
+        }
+        else {
+          scaled_x = Math.log10(1 / (normalized_values[i] + .0001))
+        };
+        return {
+          id: d.id,
+          level: d.level,
+          translation: d.translation,
+          pos: d.pos,
+          rank: i,
+          count: d.count,
+          trend: 12,
+          originalX: (scaled_x / 5) * width + 50,
+          x: (scaled_x / 5) * width + 50,
+          y: height / 2
+        }
+      });
+      console.log('newdata', newdata[10]);
+      draw(newdata);
+      if (error) throw error;
+
+
+    });
+
+    function draw(data) {
+      svg.selectAll("circle").remove();
+      var node = svg.selectAll("circle")
+        .data(data)
+        .call(d3.drag()
+          .on("start", dragstarted)
+          .on("drag", dragged)
+          .on("end", dragended))
+        .enter().append("circle")
+        .attr("r", radius - .75)
+        .attr("cx", function (d) { return d.x; })
+        .attr("cy", height / 2)
+        .attr("fill", function (d, i) {
+          if (i == 0) {
+            return "white";
+          }
+          if (d.level == "1E") {
+            color = "#32CD32"
+          }
+          if (d.level == "2I") {
+            color = "blue"
+          }
+          if (d.level == "3A") {
+            color = "purple"
+          }
+          if (d.level == "4SU") {
+            color = "orange"
+          }
+          return color;
+        })
+        .style("stroke", function (d) { return "black"; })
+          
+        .on("mouseenter", function (d) {
+          id.text(d.id);
+          count.text(d.count);
+          trans.text(d.translation);
+          level.text(d.level);
+          tooltip.transition().duration(0).style("opacity", 1); // remove fade out transition on mouseleave
+        })
+        .on("mouseleave", function (d) {
+          tooltip.transition().duration(1000).style("opacity", 0);
+        });
+
+      simulation.nodes(data)
+        .on("tick", tick)
+
+      function tick() {
+        node.on(function (d) { d.x = d.originalX; }) //constrains/fixes x-position
+        node
+        // .attr("cx", function (d) { return d.x = Math.max(radius, Math.min(width - radius, d.x)); })
+          .attr("cy", function (d) { return d.y = Math.max(radius, Math.min(height - radius, d.y)); });
+      }
+      function dragstarted(d) {
+        if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+        d.fx = d.x;
+        d.fy = d.y;
+      }
+
+      function dragged(d) {
+        d.fx = d3.event.x;
+        d.fy = d3.event.y;
+      }
+
+      function dragended(d) {
+        if (!d3.event.active) simulation.alphaTarget(0);
+        //d.fx = null;
+        //d.fy = null;
+      }
+    };
+
+  </script>
+</body>

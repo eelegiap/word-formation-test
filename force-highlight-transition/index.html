@@ -34,12 +34,17 @@
   <h1>Force highlight chart for "говор" root.</h1>
   <h2>Distance from center is correlated with count (less common words are farther away). Lemmas are colored by level.
   </h2>
-  <p><span style="float: left"><select id="selectButton"></select></span><span style="float: right;"><b>Total words displayed:</b> <span id="count"></span></span></p>
+  <div id="option">
+    <input name="updateButton" type="button" value="Change to Linear View" onclick="updateData()" />
+    <select id="colorButton"></select>
+    <select id="labelButton"></select>
+    <span style="float: right;"><b>Total words displayed:</b> <span id="count"></span></span>
+  </div>
   <br>
-  <h3 id="levellegend">Level: <span style="color: #32CD32">1E</span> / <span style="color: blue">2I</span> / <span
-      style="color: purple">3A</span> / <span style="color: orange;">4SU</span></h3>
-  <h3 id="poslegend" style="display: none;">Part of speech: <span style="color: blue">Noun</span> / <span
-      style="color: yellow; background-color: rgba(0, 0, 0, 0.698);">Adjective</span> / <span style="color: red">Verb</span></h3>
+  <h3 id="levellegend">Level: <span style="color: #00ad43">1E</span> / <span style="color: #3da5d9">2I</span> / <span
+      style="color: #69359c">3A</span> / <span style="color: #ffa41c;">4SU</span></h3>
+  <h3 id="poslegend" style="display: none;">Part of speech: <span style="color: #118ab2">Noun</span> / <span
+      style="color: #ffd166;">Adjective</span> / <span style="color: #ef476f">Verb</span></h3>
   <svg width="1200" height="700"></svg>
 </body>
 
@@ -47,43 +52,37 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.24.0/d3-legend.min.js"></script>
 <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 <script>
-
-
-
   // List of groups (here I have one group per column)
-  var allGroup = ["Color by level", "Color by part of speech"]
+  var color_groups = ["Color by level", "Color by part of speech"]
 
-  // add the options to the button
-  d3.select("#selectButton")
+  // add the options to the color button
+  d3.select("#colorButton")
     .selectAll('myOptions')
-    .data(allGroup)
+    .data(color_groups)
     .enter()
     .append('option')
     .text(function (d) { return d; }) // text showed in the menu
     .attr("value", function (d) { return d; }) // corresponding value returned by the button
 
+  // add the options to the color button
+  d3.select("#labelButton")
+    .selectAll('myOptions')
+    .data(['Show labels', 'Hide labels'])
+    .enter()
+    .append('option')
+    .text(function (d) { return d; }) // text showed in the menu
+    .attr("value", function (d) { return d; }) // corresponding value returned by the button
 
-  var color = d3.scaleOrdinal(d3.schemeSet3);
-  color(0);
-  color(1);
-  color(2);
-  color(3);
-  color(4);
-  color(5);
-  color(6);
-  color(7);
-  color(8);
-  color(9);
-  color(10);
-
-
+  // set radius of circle
+  const R = 15;
 
   var tooltip = d3.select("body")
     .append("div")
     .attr("class", "tooltip")
     .style("opacity", 0);
-
-
+  const svg = d3.select('svg'),
+    width = +svg.attr('width'),
+    height = +svg.attr('height');
   d3.json("misyl_data.json", function (error, graph) {
 
     var total_word_count = graph.nodes.length;
@@ -116,7 +115,7 @@
       z_scores.push(z_score);
     }
     // make 0 to 1
-    var normalized_values = []
+    normalized_values = []
     var min = Math.min.apply(Math, z_scores);
     var max = Math.max.apply(Math, z_scores);
 
@@ -124,10 +123,10 @@
       var normalized_val = (z_scores[i] - min) / (max - min);
       normalized_values.push(normalized_val);
     }
-    
-console.log(normalized_values);
+    normalized_values.sort().reverse();
 
-    const simulation = d3.forceSimulation()
+    // enter the simulation!!!
+    simulation = d3.forceSimulation()
       .nodes(graph.nodes)
       .force('link', d3.forceLink().id(d => d.id)
         .distance(function (d, i) {
@@ -141,20 +140,14 @@ console.log(normalized_values);
     simulation.force('link')
       .links(graph.links);
 
-    const R = 17;
-
-
-
-
-    let link = svg.selectAll('line')
+    link = svg.selectAll('line')
       .data(graph.links)
       .enter().append('line');
 
     link
-      .attr('class', 'link')
-      ;
+      .attr('class', 'link');
 
-    let node = svg.selectAll('.node')
+    node = svg.selectAll('.node')
       .data(graph.nodes)
       .enter().append('g')
       .attr('class', 'node')
@@ -166,23 +159,7 @@ console.log(normalized_values);
     node.append('circle')
       .attr('r', R)
       .attr("fill", function (d, i) {
-        if (i == 0) {
-          return "white";
-        }
-        if (d.level == "1E") {
-          color = "#32CD32"
-        }
-        if (d.level == "2I") {
-          color = "blue"
-        }
-        if (d.level == "3A") {
-          color = "purple"
-        }
-        if (d.level == "4SU") {
-          color = "orange"
-        }
-        return color;
-        // return color(d.group);
+        return get_level_color(d.level, i)
       })
       .on('mouseover.tooltip', function (d) {
         tooltip.transition()
@@ -215,6 +192,7 @@ console.log(normalized_values);
     node.append('text')
       .attr('x', 0)
       .attr('dy', '.35em')
+      .attr("display", "block")
       .text(d => d.id);
 
     function ticked() {
@@ -227,7 +205,30 @@ console.log(normalized_values);
       node
         .attr('transform', d => `translate(${d.x},${d.y})`);
     }
+    function releasenode(d) {
+      d.fx = null;
+      d.fy = null;
+    }
 
+    const linkedByIndex = {};
+    graph.links.forEach(d => {
+      linkedByIndex[`${d.source.index},${d.target.index}`] = 1;
+    });
+
+    function isConnected(a, b) {
+      return linkedByIndex[`${a.index},${b.index}`] || linkedByIndex[`${b.index},${a.index}`] || a.index === b.index;
+    }
+
+    function fade(opacity) {
+      return d => {
+        node.style('stroke-opacity', function (o) {
+          const thisOpacity = isConnected(d, o) ? 1 : opacity;
+          this.setAttribute('fill-opacity', thisOpacity);
+          return thisOpacity;
+        });
+        link.style('stroke-opacity', o => (o.source === d || o.target === d ? 1 : opacity));
+      };
+    }
     function dragstarted(d) {
       if (!d3.event.active) simulation.alphaTarget(0.3).restart();
       d.fx = d.x;
@@ -241,52 +242,11 @@ console.log(normalized_values);
 
     function dragended(d) {
       if (!d3.event.active) simulation.alphaTarget(0);
-      //d.fx = null;
-      //d.fy = null;
     }
-    function releasenode(d) {
-      d.fx = null;
-      d.fy = null;
-    }
-
-    const linkedByIndex = {};
-    graph.links.forEach(d => {
-      linkedByIndex[`${d.source.index},${d.target.index}`] = 1;
-    });
-
-    // console.log("linkedByIndex");
-    // console.log(linkedByIndex);
-
-
-    function isConnected(a, b) {
-      return linkedByIndex[`${a.index},${b.index}`] || linkedByIndex[`${b.index},${a.index}`] || a.index === b.index;
-    }
-
-    function fade(opacity) {
-
-      return d => {
-        // console.log("fade");
-        // console.log(d);
-        node.style('stroke-opacity', function (o) {
-
-          //  console.log("isConnected",d , o);
-          //  console.log(isConnected(d, o));
-
-          const thisOpacity = isConnected(d, o) ? 1 : opacity;
-          this.setAttribute('fill-opacity', thisOpacity);
-          return thisOpacity;
-        });
-
-        link.style('stroke-opacity', o => (o.source === d || o.target === d ? 1 : opacity));
-
-      };
-    }
-    var sequentialScale = d3.scaleOrdinal(d3.schemeSet3)
-      .domain([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
 
     // A function that update the chart
     // https://www.d3-graph-gallery.com/graph/line_select.html
-    function update(selectedGroup) {
+    function colorUpdate(selectedGroup) {
       circles = d3.selectAll("circle");
       if (selectedGroup == 'Color by part of speech') {
         d3.select("#levellegend").style("display", "none");
@@ -295,20 +255,7 @@ console.log(normalized_values);
           .transition()
           .duration(750)
           .attr("fill", function (d, i) {
-            if (i == 0) {
-              return "white";
-            }
-            if (d.pos == "noun") {
-              color = "blue"
-            }
-            if (d.pos == "adj") {
-              color = "yellow"
-            }
-            if (d.pos == "verb") {
-              color = "red"
-            }
-            return color;
-
+            return get_pos_color(d.pos, i)
           })
       }
       if (selectedGroup == 'Color by level') {
@@ -318,50 +265,142 @@ console.log(normalized_values);
           .transition()
           .duration(750)
           .attr("fill", function (d, i) {
-            if (i == 0) {
-              return "white";
-            }
-            if (d.level == "1E") {
-              color = "#32CD32"
-            }
-            if (d.level == "2I") {
-              color = "blue"
-            }
-            if (d.level == "3A") {
-              color = "purple"
-            }
-            if (d.level == "4SU") {
-              color = "orange"
-            }
-            return color;
+            return get_level_color(d.level, i)
           })
-
       }
-      // console.log(circles);
-      // Create new data with the selection?
-      // var dataFilter = data.map(function (d) { return { time: d.time, value: d[selectedGroup] } })
-
-      // Give these new data to update line
-      // line
-      //   .datum(dataFilter)
-      //   .transition()
-      //   .duration(1000)
-      //   .attr("d", d3.line()
-      //     .x(function (d) { return x(+d.time) })
-      //     .y(function (d) { return y(+d.value) })
-      //   )
-      //   .attr("stroke", function (d) { return myColor(selectedGroup) })
     }
-
-    // When the button is changed, run the updateChart function
-    d3.select("#selectButton").on("change", function (d) {
+    // when the dropdown is changed, change color
+    d3.select("#colorButton").on("change", function (d) {
       // recover the option that has been chosen
       var selectedOption = d3.select(this).property("value")
       // run the updateChart function with this selected option
-      update(selectedOption)
+      colorUpdate(selectedOption)
     })
 
+    function labelUpdate(selectedGroup) {
+      var current_state = node.select("text").attr("display");
+      console.log(current_state);
+      node.select("text")
+          .transition()
+          .attr("display",
+          function() {
+            if (current_state == 'block') {
+              return "none"
+            }
+            else {
+              return "block"
+            }
+          })
+    }
+    // when the dropdown is changed, change label
+    d3.select("#labelButton").on("change", function (d) {
+      // recover the option that has been chosen
+      var selectedOption = d3.select(this).property("value")
+      // run the updateChart function with this selected option
+      labelUpdate(selectedOption)
+    })
+    data = graph.nodes;
   })
 
+  function updateData() {
+    console.log("updating...");
 
+    // make linear ticks
+    linearXs = []
+    for (i = 0; i < data.length; i++) {
+      if (i == 0) {
+        scaled_x = Math.log10(1 / (normalized_values[i]))
+      }
+      else {
+        scaled_x = Math.log10(1 / (normalized_values[i] + .0001))
+      };
+      linearXs.push((scaled_x / 5) * width + 50)
+    };
+    // density data
+    densityXs = []
+    for (i = 0; i < data.length; i++) {
+      var val1 = linearXs[i];
+      var counter = 0;
+      for (j = 0; j < data.length; j++) {
+        var val2 = linearXs[j];
+        if ((val2 > (val1 - R * 2)) && val2 < (val1 + R * 2)) {
+          counter++;
+        }
+      }
+      densityXs.push(counter);
+    }
+
+    svg.append("line")
+      .attr("opacity", 0)
+      .attr("x1", 0)
+      .attr("y1", height / 2)
+      .attr("x2", width)
+      .attr("y2", height / 2)
+      .style("stroke", "lightgrey")
+      .transition()
+      .duration(2000)
+      .attr("opacity", 1);
+
+    d3.selectAll('.node')
+      .transition()
+      .duration(1000)
+      .attr("transform", function (d, i) {
+        if (i > 1) {
+          var randomness = (Math.random() - .5) * densityXs[i] * 75;
+        }
+        else {
+          var randomness = 0;
+        }
+        return "translate(" + linearXs[i] + "," + (height / 2 + randomness) + ")";
+      });
+
+
+    simulation.alpha(1).restart();
+
+    simulation
+      .force('charge', d3.forceManyBody().strength(-30000));
+    simulation.nodes(data)
+      .on("tick", tick)
+    simulation.alpha(1).restart();
+
+    function tick() {
+      node.on(function (d) { d.x = d.originalX; }) //constrains/fixes x-position
+      node
+        // .attr("cx", function (d) { return d.x = Math.max(R, Math.min(width - R, d.x)); });
+        .attr("cy", function (d) { return d.y = Math.max(R, Math.min(height - R, d.y)); });
+    }
+  };
+  function get_pos_color(pos, i) {
+    if (i == 0) {
+      return "white";
+    }
+    if (pos == "noun") {
+      color = "#3da5d9"
+    }
+    if (pos == "adj") {
+      color = "#ffd166"
+    }
+    if (pos == "verb") {
+      color = "#ef476f"
+    }
+    return color;
+  }
+  function get_level_color(level, i) {
+    if (i == 0) {
+      return "white";
+    }
+    if (level == "1E") {
+      color = "#00ad43"
+    }
+    if (level == "2I") {
+      color = "#3da5d9"
+    }
+    if (level == "3A") {
+      color = "#69359c"
+    }
+    if (level == "4SU") {
+      color = "#ffa41c"
+    }
+    return color;
+  }
 </script>
