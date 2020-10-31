@@ -42,7 +42,7 @@
   </div>
   <br>
   <h3 id="levellegend">Level: <span style="color: #00ad43">1E</span> / <span style="color: #3da5d9">2I</span> / <span
-      style="color: #69359c">3A</span> / <span style="color: #ffa41c;">4SU</span></h3>
+      style="color: #69359c">3A/3AU</span> / <span style="color: #ffa41c;">4S/4SU</span></h3>
   <h3 id="poslegend" style="display: none;">Part of speech: <span style="color: #118ab2">Noun</span> / <span
       style="color: #ffd166;">Adjective</span> / <span style="color: #ef476f">Verb</span></h3>
   <svg width="1200" height="700"></svg>
@@ -395,10 +395,10 @@
     if (level == "2I") {
       color = "#3da5d9"
     }
-    if (level == "3A") {
+    if ((level == "3A")|| (level == "3AU")) {
       color = "#69359c"
     }
-    if (level == "4SU") {
+    if ((level == "4SU") || (level == "4S")) {
       color = "#ffa41c"
     }
     return color;
