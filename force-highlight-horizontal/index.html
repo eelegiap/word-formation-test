@@ -22,7 +22,7 @@
     // var fill = d3.scale.linear().domain([1, 150]).range(['lightgreen', 'pink']);
     var drag = d3.drag();
     var simulation = d3.forceSimulation()
-    .force('charge', d3.forceManyBody().strength(-30).distanceMin(5).distanceMax(100));
+    .force('charge', d3.forceManyBody().strength(-50).distanceMin(1).distanceMax(100));
 
     var svg = d3.select("body").append("svg")
       .attr("width", width)
@@ -69,7 +69,7 @@
     level.attr("text-anchor", "start")
       .attr("transform", "translate(" + [0, 45] + ")");
 
-    d3.json("misyl_data.json", function (error, graph) {
+    d3.json("zhiv_data.json", function (error, graph) {
 
       var total_word_count = graph.nodes.length;
       d3.select("#count").text(total_word_count);
