@@ -193,7 +193,7 @@ d3.json("gorod_data.json", function (graph) {
                 return 1;
             };
         });
-        return counter;
+        return counter - 1;
     };
     var gStep = d3
         .select('div#slider-step')
