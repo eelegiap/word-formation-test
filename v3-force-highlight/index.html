@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!-- https://bl.ocks.org/FrissAnalytics/15d253b647fa81f2bd1498132a007f12 -->
+<meta charset="utf-8">
+<title>Force V3</title>
+<link rel="stylesheet" href="style.css">
+
+<head>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <!-- https://github.com/johnwalley/d3-simple-slider -->
+  <script src="d3-simple-slider.js"></script>
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Force highlight chart for "бав" root family ('amusement, addition, riddance').</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class='col-md-12'>
+        <p>Distance from center is inversely correlated with count (less common words are farther away).</p>
+      </div>
+    </div>
+    <div class="row " id="option">
+      <div class='col-md-4'>
+        <!-- <input name="radtolinButton" type="button" value="Linear View" onclick="RadToLin()" />
+        <input name="lintoradButton" type="button" value="Radial View" onclick="LinToRad()" /> -->
+        <select id="colorButton"></select>
+        <select id="labelButton"></select>
+      </div>
+      <div class='col-md-8' id="levelcheckboxrow">
+        <span> Select levels shown: </span>
+        <input type="checkbox" id="level1" checked><span style="color: #00ad43;"> 1E </span>
+        <input type="checkbox" id="level2" checked><span style="color: #3da5d9"> 2I </span>
+        <input type="checkbox" id="level3" checked><span style="color: #69359c"> 3A </span>
+        <input type="checkbox" id="level4" checked><span style="color: #ffa41c;"> 4U </span>
+      </div>
+      <div class="col-md-8" id="colorcheckboxrow" style="display:none">
+        <span> Select part of speech shown: </span>
+        <input type="checkbox" id="noun" checked><span style="color: #118ab2;"> Noun </span>
+        <input type="checkbox" id="adj" checked><span style="color: #ffd166"> Adjective </span>
+        <input type="checkbox" id="verb" checked><span style="color: #ef476f"> Verb </span>
+        <input type="checkbox" id="adv" checked><span style="color: #00ad43"> Adverb </span>
+      </div>
+    </div>
+      <!-- <div class='col-md-4' style="text-align: right;">
+        <span id="levellegend" style="font-weight: bold;">Level: <span style="color: #00ad43;">1E</span> / <span
+            style="color: #3da5d9">2I</span> /
+          <span style="color: #69359c">3A/3AU</span> / <span style="color: #ffa41c;">4S/4SU</span></span>
+        <span id="poslegend" style="display: none; font-weight: bold;">Part of speech: <span
+            style="color: #118ab2">Noun</span> / <span style="color: #ffd166;">Adjective</span> / <span
+            style="color: #ef476f">Verb</span> / <span style="color: #00ad43">Adverb</span></span>
+      </div>
+    </div> -->
+
+    <div class="row" style="padding-top:20px;">
+      <div class="col-md-12" class="slider-label">
+        <p style="display:inline">Slide to show/hide bubbles:</p>
+        <p style="display:inline; font-style: italic" id="value-step"></p>
+        <p style="display:inline"> of words shown for the root family.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-9">
+        <div style="display: inline;" id="slider-step"></div>
+      </div>
+      <div class='col-md-3'>
+        <span style="float: right;"><b>Total words displayed:</b> <span id="count"></span></span>
+      </div>
+    </div>
+  </div>
+
+  <svg id="chartsvg"></svg>
+</body>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="vis.js"></script>
