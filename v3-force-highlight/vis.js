@@ -27,9 +27,10 @@ var tooltip = d3.select("body")
 svg = d3.select('#chartsvg');
 
 // load data
-d3.json("bav_data.json", function (error, graph) {
+d3.json("gorod_data.json", function (graph) {
     // get total word count
-    total_word_count = graph.nodes.length;
+    total_word_count = graph.nodes.length - 1;
+    console.log('orig',total_word_count)
     d3.select("#count").text(total_word_count);
 
     // size svg accordingly
@@ -46,7 +47,7 @@ d3.json("bav_data.json", function (error, graph) {
         .nodes(graph.nodes)
         .force('link', d3.forceLink().id(d => d.id)
             .distance(function (d, i) {
-                return ((3 / (normalized_values[i] ** 1.5 + .01)));
+                return ((3 / (normalized_values[i] ** 1.2 + .01)));
             }))
         .force('charge', d3.forceManyBody().strength(-300))
         .force('center', d3.forceCenter(width / 2, height / 2))
@@ -65,25 +66,14 @@ d3.json("bav_data.json", function (error, graph) {
         .enter().append('g')
         .attr("class", function (d, i) {
             if (i == 0) {
-                var level = "level1";
+                var level = "";
             } else {
                 var level = "level" + d.level[0];
-            }
-            if (d.pos == 'adj') {
-                return level + ' adj'
-            }
-            if (d.pos == 'verb') {
-                return level + ' verb'
-            }
-            if (d.pos == 'adv') {
-                return level + ' adv'
-            }
-            if (d.pos == "noun") {
-                return level + " noun";
-            } else {
-                return level + ' unidentifiedPOS';
-            }
+            };
+            var thisclass = level + ' ' + d.pos;
+            return thisclass;
         })
+        .attr("opacity",1)
         .call(d3.drag()
             .on("start", dragstarted)
             .on("drag", dragged)
@@ -127,42 +117,50 @@ d3.json("bav_data.json", function (error, graph) {
         .attr("display", "block")
         .text(d => d.id);
 
-    function setOpacity(selectedClass, opacity) {
-        d3.selectAll(selectedClass)
-            .transition()
-            .duration(750)
-            .attr("opacity", opacity);
-    };
-
     // checkboxes for level
     d3.select("#level1").on("change", updateLevel);
     d3.select("#level2").on("change", updateLevel);
     d3.select("#level3").on("change", updateLevel);
     d3.select("#level4").on("change", updateLevel);
     function updateLevel() {
+        var counter = 0
         for (i = 1; i <= 4; i++) {
             if (d3.select("#level" + i).property("checked")) {
                 setOpacity('.level' + i, 1)
+                counter += d3.selectAll('.level' + i).size()
             } else {
                 setOpacity(".level" + i, 0)
             }
-        }
+        }    
+        console.log('levelcount',counter);
+        d3.select("#count").text(counter);
     };
     updateLevel();
 
+    function setOpacity(selectedClass, opacity) {
+        d3.selectAll(selectedClass)
+            .transition()
+            .duration(750)
+            .attr("opacity", opacity);
+    };
     // checkboxes for POS
     d3.select("#noun").on("change", updatePOS);
     d3.select("#adj").on("change", updatePOS);
     d3.select("#adv").on("change", updatePOS);
     d3.select("#verb").on("change", updatePOS);
+    d3.select("#phrase").on("change", updatePOS);
     function updatePOS() {
-        for (var pos of ['noun','adj','verb','adv']) {
+        var counter = 0
+        for (var pos of ['noun','adj','verb','adv','phrase']) {
             if (d3.select("#" + pos).property("checked")) {
                 setOpacity('.' + pos, 1)
+                counter += d3.selectAll('.' + pos).size()
             } else {
                 setOpacity("." + pos, 0)
             }
         }
+        console.log('colorcount',counter);
+        d3.select("#count").text(counter);
     };
     updatePOS();
 
@@ -179,17 +177,23 @@ d3.json("bav_data.json", function (error, graph) {
         .default(1)
         .fill('#2196f3')
         .on('onchange', function() {
-            valueChange(sliderStep.value());
+            var counter = valueChange(sliderStep.value());
+            console.log('counter', counter)
             d3.select('p#value-step').text(d3.format('.0%')(sliderStep.value()));
+            d3.select("#count").text(counter);
         });
+
     function valueChange(value) {
+        var counter = 0
         node.transition().duration(850).attr("opacity",function(d,i) {
             if (i > (value*data.length)) {
                 return 0;
             } else {
+                counter += 1
                 return 1;
-            }
+            };
         });
+        return counter;
     };
     var gStep = d3
         .select('div#slider-step')
@@ -202,6 +206,16 @@ d3.json("bav_data.json", function (error, graph) {
     gStep.call(sliderStep);
     d3.select('p#value-step').text(d3.format('.0%')(sliderStep.value()));
 
+    function resetCount() {
+        var current_word_count = 0;
+        node.each(function() {
+            var thisopacity = d3.select(this).attr("opacity");
+            if (thisopacity == 1) {
+                current_word_count += 1
+            }
+        })
+        d3.select("#count").transition().duration(1000).text(current_word_count);
+    };
 
     function ticked() {
         link
@@ -399,7 +413,6 @@ function RadToLin() {
         .transition()
         .duration(1000)
         .attr("transform", function (d, i) {
-            console.log(i, d);
             // xs
             var xrandomness = 0
             if (densityXs[i] > 20) {
@@ -424,7 +437,7 @@ function RadToLin() {
     // simulation.alpha(1).restart();
 
     simulation
-        .force('charge', d3.forceManyBody().strength(-30000));
+        .force('charge', d3.forceManyBody().strength(-30));
     simulation.nodes(data)
         .on("tick", tick)
     simulation.alpha(1).restart();
@@ -466,6 +479,9 @@ function get_pos_color(pos, i) {
     }
     if (pos == 'adv') {
         color = "#00ad43";
+    }
+    if (pos == 'phrase') {
+        color = "#69359c";
     }
     return color;
 }

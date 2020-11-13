@@ -1,0 +1,1146 @@
+{
+    "nodes": [
+        {
+            "id": "город, град, горож, гражд, гораж",
+            "group": 1,
+            "count": 0,
+            "pos": "root",
+            "level": "N/A",
+            "translation": "enclosure, city"
+        },
+        {
+            "id": "город",
+            "group": 1,
+            "count": 630.59,
+            "pos": "noun",
+            "level": "1E",
+            "translation": "city; town"
+        },
+        {
+            "id": "гражданин",
+            "group": 1,
+            "count": 114.83,
+            "pos": "noun",
+            "level": "2I",
+            "translation": "citizen"
+        },
+        {
+            "id": "городской",
+            "group": 1,
+            "count": 86.49,
+            "pos": "adj",
+            "level": "1E",
+            "translation": "city; urban"
+        },
+        {
+            "id": "Ленинград",
+            "group": 1,
+            "count": 77.74,
+            "pos": "noun",
+            "level": "3A",
+            "translation": "Leningrad"
+        },
+        {
+            "id": "благородный",
+            "group": 1,
+            "count": 57.66,
+            "pos": "adj",
+            "level": "3A",
+            "translation": "N/A"
+        },
+        {
+            "id": "гражданский",
+            "group": 1,
+            "count": 55.33,
+            "pos": "adj",
+            "level": "2I",
+            "translation": "civil"
+        },
+        {
+            "id": "огород",
+            "group": 1,
+            "count": 54.54,
+            "pos": "noun",
+            "level": "2I",
+            "translation": "vegetable garden"
+        },
+        {
+            "id": "городок",
+            "group": 1,
+            "count": 47.62,
+            "pos": "noun",
+            "level": "2I",
+            "translation": "town; small town"
+        },
+        {
+            "id": "ленинградский",
+            "group": 1,
+            "count": 30.24,
+            "pos": "adj",
+            "level": "3A",
+            "translation": "N/A"
+        },
+        {
+            "id": "награда",
+            "group": 1,
+            "count": 28.22,
+            "pos": "noun",
+            "level": "3A",
+            "translation": "reward; prize"
+        },
+        {
+            "id": "ограда",
+            "group": 1,
+            "count": 25.83,
+            "pos": "noun",
+            "level": "4S",
+            "translation": "fence; wall"
+        },
+        {
+            "id": "градус",
+            "group": 1,
+            "count": 24.12,
+            "pos": "noun",
+            "level": "2I",
+            "translation": "degree"
+        },
+        {
+            "id": "горожанин",
+            "group": 1,
+            "count": 16.22,
+            "pos": "noun",
+            "level": "3A",
+            "translation": "N/A"
+        },
+        {
+            "id": "перегородка",
+            "group": 1,
+            "count": 15.12,
+            "pos": "noun",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "наградить",
+            "group": 1,
+            "count": 15.0,
+            "pos": "verb",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "град",
+            "group": 1,
+            "count": 13.41,
+            "pos": "noun",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "виноград",
+            "group": 1,
+            "count": 12.12,
+            "pos": "noun",
+            "level": "2I",
+            "translation": "grape(s) (sg only)"
+        },
+        {
+            "id": "изгородь",
+            "group": 1,
+            "count": 10.59,
+            "pos": "noun",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "гражданство",
+            "group": 1,
+            "count": 9.85,
+            "pos": "noun",
+            "level": "2I",
+            "translation": "citizenship"
+        },
+        {
+            "id": "гражданка",
+            "group": 1,
+            "count": 9.79,
+            "pos": "noun",
+            "level": "2I",
+            "translation": "citizen"
+        },
+        {
+            "id": "преграда",
+            "group": 1,
+            "count": 9.79,
+            "pos": "noun",
+            "level": "2I",
+            "translation": "barrier; obstacle"
+        },
+        {
+            "id": "благородство",
+            "group": 1,
+            "count": 9.49,
+            "pos": "noun",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "пригород",
+            "group": 1,
+            "count": 7.35,
+            "pos": "noun",
+            "level": "2I",
+            "translation": "suburb"
+        },
+        {
+            "id": "городовой",
+            "group": 1,
+            "count": 7.22,
+            "pos": "noun",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "огородить",
+            "group": 1,
+            "count": 6.98,
+            "pos": "verb",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "градусник",
+            "group": 1,
+            "count": 6.61,
+            "pos": "noun",
+            "level": "2I",
+            "translation": "thermometer"
+        },
+        {
+            "id": "городишко",
+            "group": 1,
+            "count": 6.43,
+            "pos": "noun",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "Новгород",
+            "group": 1,
+            "count": 6.3,
+            "pos": "noun",
+            "level": "2I",
+            "translation": "Novgorod"
+        },
+        {
+            "id": "ленинградец",
+            "group": 1,
+            "count": 6.3,
+            "pos": "noun",
+            "level": "3A",
+            "translation": "N/A"
+        },
+        {
+            "id": "ограждение",
+            "group": 1,
+            "count": 6.18,
+            "pos": "noun",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "загородить",
+            "group": 1,
+            "count": 5.88,
+            "pos": "verb",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "огородный",
+            "group": 1,
+            "count": 5.63,
+            "pos": "adj",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "вознаграждение",
+            "group": 1,
+            "count": 5.57,
+            "pos": "noun",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "нижегородский",
+            "group": 1,
+            "count": 5.51,
+            "pos": "adj",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "загородный",
+            "group": 1,
+            "count": 5.39,
+            "pos": "adj",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "огородник",
+            "group": 1,
+            "count": 5.26,
+            "pos": "noun",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "петроградский",
+            "group": 1,
+            "count": 5.2,
+            "pos": "adj",
+            "level": "3A",
+            "translation": "Petrograd"
+        },
+        {
+            "id": "виноградный",
+            "group": 1,
+            "count": 5.08,
+            "pos": "adj",
+            "level": "2I",
+            "translation": "grape"
+        },
+        {
+            "id": "загораживать",
+            "group": 1,
+            "count": 4.9,
+            "pos": "verb",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "деградация",
+            "group": 1,
+            "count": 4.84,
+            "pos": "noun",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "пригородный",
+            "group": 1,
+            "count": 4.59,
+            "pos": "adj",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "награждать",
+            "group": 1,
+            "count": 4.53,
+            "pos": "verb",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "отгородить",
+            "group": 1,
+            "count": 4.41,
+            "pos": "verb",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "оградить",
+            "group": 1,
+            "count": 4.16,
+            "pos": "verb",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "преградить",
+            "group": 1,
+            "count": 4.1,
+            "pos": "verb",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "благородно",
+            "group": 1,
+            "count": 4.04,
+            "pos": "adv",
+            "level": "3A",
+            "translation": "N/A"
+        },
+        {
+            "id": "виноградник",
+            "group": 1,
+            "count": 3.86,
+            "pos": "noun",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "заграждение",
+            "group": 1,
+            "count": 3.8,
+            "pos": "noun",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "согражданин",
+            "group": 1,
+            "count": 3.8,
+            "pos": "noun",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "перегородить",
+            "group": 1,
+            "count": 3.73,
+            "pos": "verb",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "награждение",
+            "group": 1,
+            "count": 3.49,
+            "pos": "noun",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "междугородный",
+            "group": 1,
+            "count": 3.43,
+            "pos": "adj",
+            "level": "3A",
+            "translation": "N/A"
+        },
+        {
+            "id": "сталинградский",
+            "group": 1,
+            "count": 3.43,
+            "pos": "adj",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "благородие",
+            "group": 1,
+            "count": 3.31,
+            "pos": "noun",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "городить",
+            "group": 1,
+            "count": 3.0,
+            "pos": "verb",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "преграждать",
+            "group": 1,
+            "count": 2.94,
+            "pos": "verb",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "ужгород",
+            "group": 1,
+            "count": 2.51,
+            "pos": "noun",
+            "level": "4SU",
+            "translation": "N/A"
+        },
+        {
+            "id": "наградной",
+            "group": 1,
+            "count": 2.45,
+            "pos": "adj",
+            "level": "4SU",
+            "translation": "N/A"
+        },
+        {
+            "id": "отгородиться",
+            "group": 1,
+            "count": 2.26,
+            "pos": "verb",
+            "level": "4SU",
+            "translation": "N/A"
+        },
+        {
+            "id": "загородка",
+            "group": 1,
+            "count": 2.2,
+            "pos": "noun",
+            "level": "4SU",
+            "translation": "N/A"
+        },
+        {
+            "id": "заградительный",
+            "group": 1,
+            "count": 2.2,
+            "pos": "adj",
+            "level": "4SU",
+            "translation": "N/A"
+        },
+        {
+            "id": "ограждать",
+            "group": 1,
+            "count": 2.2,
+            "pos": "verb",
+            "level": "4SU",
+            "translation": "N/A"
+        },
+        {
+            "id": "городьба",
+            "group": 1,
+            "count": 2.14,
+            "pos": "noun",
+            "level": "4SU",
+            "translation": "N/A"
+        },
+        {
+            "id": "белград",
+            "group": 1,
+            "count": 2.08,
+            "pos": "noun",
+            "level": "4SU",
+            "translation": "N/A"
+        },
+        {
+            "id": "оградка",
+            "group": 1,
+            "count": 2.08,
+            "pos": "noun",
+            "level": "4SU",
+            "translation": "N/A"
+        },
+        {
+            "id": "деградировать",
+            "group": 1,
+            "count": 2.02,
+            "pos": "verb",
+            "level": "4SU",
+            "translation": "N/A"
+        },
+        {
+            "id": "облагородить",
+            "group": 1,
+            "count": 2.02,
+            "pos": "verb",
+            "level": "4SU",
+            "translation": "N/A"
+        },
+        {
+            "id": "Волгоград",
+            "group": 1,
+            "count": 1.96,
+            "pos": "noun",
+            "level": "3A",
+            "translation": "Volgograd"
+        },
+        {
+            "id": "вознаградить",
+            "group": 1,
+            "count": 1.9,
+            "pos": "verb",
+            "level": "4SU",
+            "translation": "N/A"
+        },
+        {
+            "id": "городище",
+            "group": 1,
+            "count": 1.9,
+            "pos": "noun",
+            "level": "4SU",
+            "translation": "N/A"
+        },
+        {
+            "id": "перегораживать",
+            "group": 1,
+            "count": 1.84,
+            "pos": "verb",
+            "level": "4SU",
+            "translation": "N/A"
+        },
+        {
+            "id": "богородица",
+            "group": 1,
+            "count": 1.78,
+            "pos": "noun",
+            "level": "4SU",
+            "translation": "N/A"
+        },
+        {
+            "id": "нижегородец",
+            "group": 1,
+            "count": 1.78,
+            "pos": "noun",
+            "level": "4SU",
+            "translation": "N/A"
+        },
+        {
+            "id": "высокоблагородие",
+            "group": 1,
+            "count": 1.65,
+            "pos": "noun",
+            "level": "4SU",
+            "translation": "N/A"
+        },
+        {
+            "id": "градоначальник",
+            "group": 1,
+            "count": 1.65,
+            "pos": "noun",
+            "level": "4SU",
+            "translation": "N/A"
+        },
+        {
+            "id": "гражданочка",
+            "group": 1,
+            "count": 1.65,
+            "pos": "noun",
+            "level": "4SU",
+            "translation": "N/A"
+        },
+        {
+            "id": "новгородский",
+            "group": 1,
+            "count": 1.65,
+            "pos": "adj",
+            "level": "4SU",
+            "translation": "N/A"
+        },
+        {
+            "id": "благороднейший",
+            "group": 1,
+            "count": 1.59,
+            "pos": "adj",
+            "level": "3A",
+            "translation": "N/A"
+        },
+        {
+            "id": "междугородний",
+            "group": 1,
+            "count": 1.59,
+            "pos": "adj",
+            "level": "4SU",
+            "translation": "N/A"
+        },
+        {
+            "id": "выгораживать",
+            "group": 1,
+            "count": 1.47,
+            "pos": "verb",
+            "level": "4SU",
+            "translation": "N/A"
+        },
+        {
+            "id": "выгородить",
+            "group": 1,
+            "count": 1.41,
+            "pos": "verb",
+            "level": "4SU",
+            "translation": "N/A"
+        },
+        {
+            "id": "завгородний",
+            "group": 1,
+            "count": 1.35,
+            "pos": "noun",
+            "level": "4SU",
+            "translation": "N/A"
+        },
+        {
+            "id": "иногородний",
+            "group": 1,
+            "count": 1.35,
+            "pos": "adj",
+            "level": "4SU",
+            "translation": "N/A"
+        },
+        {
+            "id": "облагораживать",
+            "group": 1,
+            "count": 1.29,
+            "pos": "verb",
+            "level": "4SU",
+            "translation": "N/A"
+        },
+        {
+            "id": "отгораживать",
+            "group": 1,
+            "count": 1.29,
+            "pos": "verb",
+            "level": "4SU",
+            "translation": "N/A"
+        },
+        {
+            "id": "белгород",
+            "group": 1,
+            "count": 1.22,
+            "pos": "noun",
+            "level": "4SU",
+            "translation": "N/A"
+        },
+        {
+            "id": "волгоградский",
+            "group": 1,
+            "count": 1.16,
+            "pos": "adj",
+            "level": "4SU",
+            "translation": "N/A"
+        },
+        {
+            "id": "калининград",
+            "group": 1,
+            "count": 1.16,
+            "pos": "noun",
+            "level": "4SU",
+            "translation": "N/A"
+        },
+        {
+            "id": "огородик",
+            "group": 1,
+            "count": 1.16,
+            "pos": "noun",
+            "level": "4SU",
+            "translation": "N/A"
+        },
+        {
+            "id": "отгораживаться",
+            "group": 1,
+            "count": 1.16,
+            "pos": "verb",
+            "level": "4SU",
+            "translation": "N/A"
+        },
+        {
+            "id": "сорокаградусный",
+            "group": 1,
+            "count": 1.1,
+            "pos": "adj",
+            "level": "4SU",
+            "translation": "N/A"
+        },
+        {
+            "id": "неблагородный",
+            "group": 1,
+            "count": 1.04,
+            "pos": "adj",
+            "level": "3A",
+            "translation": "N/A"
+        },
+        {
+            "id": "код города",
+            "group": 1,
+            "count": 0.001,
+            "pos": "phrase",
+            "level": "2I",
+            "translation": "city code"
+        },
+        {
+            "id": "родной город",
+            "group": 1,
+            "count": 0.001,
+            "pos": "phrase",
+            "level": "1E",
+            "translation": "hometown"
+        }
+    ],
+    "links": [
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "город, град, горож, гражд, гораж"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "город"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "гражданин"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "городской"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "Ленинград"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "благородный"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "гражданский"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "огород"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "городок"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "ленинградский"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "награда"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "ограда"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "градус"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "горожанин"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "перегородка"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "наградить"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "град"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "виноград"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "изгородь"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "гражданство"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "гражданка"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "преграда"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "благородство"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "пригород"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "городовой"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "огородить"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "градусник"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "городишко"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "Новгород"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "ленинградец"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "ограждение"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "загородить"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "огородный"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "вознаграждение"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "нижегородский"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "загородный"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "огородник"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "петроградский"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "виноградный"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "загораживать"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "деградация"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "пригородный"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "награждать"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "отгородить"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "оградить"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "преградить"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "благородно"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "виноградник"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "заграждение"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "согражданин"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "перегородить"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "награждение"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "междугородный"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "сталинградский"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "благородие"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "городить"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "преграждать"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "ужгород"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "наградной"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "отгородиться"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "загородка"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "заградительный"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "ограждать"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "городьба"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "белград"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "оградка"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "деградировать"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "облагородить"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "Волгоград"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "вознаградить"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "городище"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "перегораживать"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "богородица"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "нижегородец"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "высокоблагородие"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "градоначальник"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "гражданочка"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "новгородский"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "благороднейший"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "междугородний"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "выгораживать"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "выгородить"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "завгородний"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "иногородний"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "облагораживать"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "отгораживать"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "белгород"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "волгоградский"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "калининград"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "огородик"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "отгораживаться"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "сорокаградусный"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "неблагородный"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "код города"
+        },
+        {
+            "source": "город, град, горож, гражд, гораж",
+            "target": "родной город"
+        }
+    ]
+}
