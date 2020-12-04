@@ -1,0 +1,59 @@
+body .container {
+  font-family: 'Times New Roman', Times, serif;
+}
+
+body p {
+  font-size: 16px;
+}
+
+#option {
+  font-size: 16px;
+}
+
+.noHover {
+  pointer-events: none;
+}
+
+.sliderOpaque {
+  opacity: 1;
+}
+.sliderTransparent {
+  opacity: 0;
+}
+.checkboxOpaque {
+  opacity: 1;
+}
+.checkboxTransparent {
+  opacity: 0;
+}
+
+.slider-label p {
+  font-size: 12px;
+}
+
+.link {
+  stroke: transparent;
+  stroke-width: 2px;
+  pointer-events: all;
+}
+
+.node circle {
+  pointer-events: none;
+  stroke: transparent;
+  stroke-width: 1px;
+  fill: transparent;
+}
+
+div.tooltip {
+  position: absolute;
+  background-color: white;
+  max-width: 300px;
+  height: auto;
+  padding: 7px;
+  font-size: 13px;
+  border-style: solid;
+  border-radius: 4px;
+  border-width: 1px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, .5);
+  pointer-events: none;
+}

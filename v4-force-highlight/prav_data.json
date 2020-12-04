@@ -1,0 +1,474 @@
+{
+    "nodes": [
+        {
+            "id": "прав/правд/правл",
+            "group": 1,
+            "count": 0,
+            "pos": "root",
+            "level": "N/A",
+            "translation": "right, truth, governing, steering"
+        },
+        {
+            "id": "правда",
+            "group": 1,
+            "count": 468.51,
+            "pos": "noun",
+            "level": "1E",
+            "translation": "truth; true; really"
+        },
+        {
+            "id": "право",
+            "group": 1,
+            "count": 314.26,
+            "pos": "noun",
+            "level": "1E",
+            "translation": "right"
+        },
+        {
+            "id": "правый",
+            "group": 1,
+            "count": 160.98,
+            "pos": "adj",
+            "level": "1E",
+            "translation": "right"
+        },
+        {
+            "id": "управление",
+            "group": 1,
+            "count": 112.32,
+            "pos": "noun",
+            "level": "3A",
+            "translation": "governance; management"
+        },
+        {
+            "id": "направление",
+            "group": 1,
+            "count": 93.04,
+            "pos": "noun",
+            "level": "2I",
+            "translation": "direction (also figurative)"
+        },
+        {
+            "id": "справка",
+            "group": 1,
+            "count": 36.73,
+            "pos": "noun",
+            "level": "2I",
+            "translation": "certificate; note; reference; transcript"
+        },
+        {
+            "id": "правитель",
+            "group": 1,
+            "count": 22.28,
+            "pos": "noun",
+            "level": "2I",
+            "translation": "ruler"
+        },
+        {
+            "id": "неправда",
+            "group": 1,
+            "count": 21.42,
+            "pos": "noun",
+            "level": "1E",
+            "translation": "untruth; lie"
+        },
+        {
+            "id": "правление",
+            "group": 1,
+            "count": 21.06,
+            "pos": "noun",
+            "level": "2I",
+            "translation": "N/A"
+        },
+        {
+            "id": "поправка",
+            "group": 1,
+            "count": 13.83,
+            "pos": "noun",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "правовой",
+            "group": 1,
+            "count": 13.16,
+            "pos": "adj",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "управа",
+            "group": 1,
+            "count": 10.96,
+            "pos": "noun",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "расправа",
+            "group": 1,
+            "count": 10.28,
+            "pos": "noun",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "переправа",
+            "group": 1,
+            "count": 9.92,
+            "pos": "noun",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "правота",
+            "group": 1,
+            "count": 9.55,
+            "pos": "noun",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "правдивый",
+            "group": 1,
+            "count": 9.12,
+            "pos": "adj",
+            "level": "2I",
+            "translation": "N/A"
+        },
+        {
+            "id": "правящий",
+            "group": 1,
+            "count": 9.06,
+            "pos": "adj",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "отправка",
+            "group": 1,
+            "count": 8.63,
+            "pos": "noun",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "отправление",
+            "group": 1,
+            "count": 5.69,
+            "pos": "noun",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "справочный",
+            "group": 1,
+            "count": 5.57,
+            "pos": "adj",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "исправление",
+            "group": 1,
+            "count": 4.65,
+            "pos": "noun",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "заправка",
+            "group": 1,
+            "count": 3.67,
+            "pos": "noun",
+            "level": "2I",
+            "translation": "gas station; refueling"
+        },
+        {
+            "id": "исправный",
+            "group": 1,
+            "count": 2.82,
+            "pos": "adj",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "выправка",
+            "group": 1,
+            "count": 2.75,
+            "pos": "noun",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "приправа",
+            "group": 1,
+            "count": 2.57,
+            "pos": "noun",
+            "level": "3A",
+            "translation": "seasoning; condiment; relish"
+        },
+        {
+            "id": "заправский",
+            "group": 1,
+            "count": 2.2,
+            "pos": "adj",
+            "level": "4SU",
+            "translation": "N/A"
+        },
+        {
+            "id": "управдом",
+            "group": 1,
+            "count": 1.96,
+            "pos": "noun",
+            "level": "4SU",
+            "translation": "N/A"
+        },
+        {
+            "id": "правка",
+            "group": 1,
+            "count": 1.71,
+            "pos": "noun",
+            "level": "4SU",
+            "translation": "N/A"
+        },
+        {
+            "id": "поправимый",
+            "group": 1,
+            "count": 1.71,
+            "pos": "adj",
+            "level": "4SU",
+            "translation": "N/A"
+        },
+        {
+            "id": "бесправие",
+            "group": 1,
+            "count": 1.59,
+            "pos": "noun",
+            "level": "4SU",
+            "translation": "N/A"
+        },
+        {
+            "id": "справочка",
+            "group": 1,
+            "count": 1.47,
+            "pos": "noun",
+            "level": "4SU",
+            "translation": "N/A"
+        },
+        {
+            "id": "справный",
+            "group": 1,
+            "count": 1.41,
+            "pos": "adj",
+            "level": "4SU",
+            "translation": "N/A"
+        },
+        {
+            "id": "исправность",
+            "group": 1,
+            "count": 1.16,
+            "pos": "noun",
+            "level": "4SU",
+            "translation": "N/A"
+        },
+        {
+            "id": "управитель",
+            "group": 1,
+            "count": 1.16,
+            "pos": "noun",
+            "level": "4SU",
+            "translation": "N/A"
+        },
+        {
+            "id": "отправитель",
+            "group": 1,
+            "count": 1.16,
+            "pos": "noun",
+            "level": "4SU",
+            "translation": "N/A"
+        },
+        {
+            "id": "неправый",
+            "group": 1,
+            "count": 1.1,
+            "pos": "adj",
+            "level": "4SU",
+            "translation": "wrong; mistaken"
+        },
+        {
+            "id": "заправочный",
+            "group": 1,
+            "count": 1.04,
+            "pos": "adj",
+            "level": "3A",
+            "translation": "N/A"
+        },
+        {
+            "id": "бесправный",
+            "group": 1,
+            "count": 1.04,
+            "pos": "adj",
+            "level": "4SU",
+            "translation": "N/A"
+        }
+    ],
+    "links": [
+        {
+            "source": "прав/правд/правл",
+            "target": "прав/правд/правл"
+        },
+        {
+            "source": "прав/правд/правл",
+            "target": "правда"
+        },
+        {
+            "source": "прав/правд/правл",
+            "target": "право"
+        },
+        {
+            "source": "прав/правд/правл",
+            "target": "правый"
+        },
+        {
+            "source": "прав/правд/правл",
+            "target": "управление"
+        },
+        {
+            "source": "прав/правд/правл",
+            "target": "направление"
+        },
+        {
+            "source": "прав/правд/правл",
+            "target": "справка"
+        },
+        {
+            "source": "прав/правд/правл",
+            "target": "правитель"
+        },
+        {
+            "source": "прав/правд/правл",
+            "target": "неправда"
+        },
+        {
+            "source": "прав/правд/правл",
+            "target": "правление"
+        },
+        {
+            "source": "прав/правд/правл",
+            "target": "поправка"
+        },
+        {
+            "source": "прав/правд/правл",
+            "target": "правовой"
+        },
+        {
+            "source": "прав/правд/правл",
+            "target": "управа"
+        },
+        {
+            "source": "прав/правд/правл",
+            "target": "расправа"
+        },
+        {
+            "source": "прав/правд/правл",
+            "target": "переправа"
+        },
+        {
+            "source": "прав/правд/правл",
+            "target": "правота"
+        },
+        {
+            "source": "прав/правд/правл",
+            "target": "правдивый"
+        },
+        {
+            "source": "прав/правд/правл",
+            "target": "правящий"
+        },
+        {
+            "source": "прав/правд/правл",
+            "target": "отправка"
+        },
+        {
+            "source": "прав/правд/правл",
+            "target": "отправление"
+        },
+        {
+            "source": "прав/правд/правл",
+            "target": "справочный"
+        },
+        {
+            "source": "прав/правд/правл",
+            "target": "исправление"
+        },
+        {
+            "source": "прав/правд/правл",
+            "target": "заправка"
+        },
+        {
+            "source": "прав/правд/правл",
+            "target": "исправный"
+        },
+        {
+            "source": "прав/правд/правл",
+            "target": "выправка"
+        },
+        {
+            "source": "прав/правд/правл",
+            "target": "приправа"
+        },
+        {
+            "source": "прав/правд/правл",
+            "target": "заправский"
+        },
+        {
+            "source": "прав/правд/правл",
+            "target": "управдом"
+        },
+        {
+            "source": "прав/правд/правл",
+            "target": "правка"
+        },
+        {
+            "source": "прав/правд/правл",
+            "target": "поправимый"
+        },
+        {
+            "source": "прав/правд/правл",
+            "target": "бесправие"
+        },
+        {
+            "source": "прав/правд/правл",
+            "target": "справочка"
+        },
+        {
+            "source": "прав/правд/правл",
+            "target": "справный"
+        },
+        {
+            "source": "прав/правд/правл",
+            "target": "исправность"
+        },
+        {
+            "source": "прав/правд/правл",
+            "target": "управитель"
+        },
+        {
+            "source": "прав/правд/правл",
+            "target": "отправитель"
+        },
+        {
+            "source": "прав/правд/правл",
+            "target": "неправый"
+        },
+        {
+            "source": "прав/правд/правл",
+            "target": "заправочный"
+        },
+        {
+            "source": "прав/правд/правл",
+            "target": "бесправный"
+        }
+    ]
+}

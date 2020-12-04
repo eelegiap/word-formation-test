@@ -1,0 +1,378 @@
+{
+    "nodes": [
+        {
+            "id": "молчать",
+            "group": 1,
+            "count": 243.68,
+            "pos": "verb",
+            "level": "2I",
+            "translation": "be silent"
+        },
+        {
+            "id": "молча",
+            "group": 1,
+            "count": 143.11,
+            "pos": "adv",
+            "level": "3A",
+            "translation": "N/A"
+        },
+        {
+            "id": "помолчать",
+            "group": 1,
+            "count": 61.82,
+            "pos": "verb",
+            "level": "2I",
+            "translation": "N/A"
+        },
+        {
+            "id": "замолчать",
+            "group": 1,
+            "count": 58.33,
+            "pos": "verb",
+            "level": "4SU",
+            "translation": "N/A"
+        },
+        {
+            "id": "молчание",
+            "group": 1,
+            "count": 56.93,
+            "pos": "noun",
+            "level": "2I",
+            "translation": "silence (absence of speech)"
+        },
+        {
+            "id": "промолчать",
+            "group": 1,
+            "count": 32.26,
+            "pos": "verb",
+            "level": "3A",
+            "translation": "N/A"
+        },
+        {
+            "id": "молчаливый",
+            "group": 1,
+            "count": 31.34,
+            "pos": "adj",
+            "level": "3A",
+            "translation": "N/A"
+        },
+        {
+            "id": "смолкнуть",
+            "group": 1,
+            "count": 14.26,
+            "pos": "verb",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "умолк",
+            "group": 1,
+            "count": 13.47,
+            "pos": "noun",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "помалкивать",
+            "group": 1,
+            "count": 11.87,
+            "pos": "verb",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "замолкнуть",
+            "group": 1,
+            "count": 9.73,
+            "pos": "verb",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "умолкать",
+            "group": 1,
+            "count": 7.96,
+            "pos": "verb",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "умолкнуть",
+            "group": 1,
+            "count": 7.71,
+            "pos": "verb",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "молчун",
+            "group": 1,
+            "count": 7.59,
+            "pos": "noun",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "замолкать",
+            "group": 1,
+            "count": 6.24,
+            "pos": "verb",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "смолчать",
+            "group": 1,
+            "count": 5.51,
+            "pos": "verb",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "молчаливо",
+            "group": 1,
+            "count": 5.33,
+            "pos": "adv",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "смолкать",
+            "group": 1,
+            "count": 4.16,
+            "pos": "verb",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "комсомолка",
+            "group": 1,
+            "count": 4.1,
+            "pos": "noun",
+            "level": "3AU",
+            "translation": "Young Communist (female)"
+        },
+        {
+            "id": "примолкнуть",
+            "group": 1,
+            "count": 3.73,
+            "pos": "verb",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "умолчать",
+            "group": 1,
+            "count": 3.49,
+            "pos": "verb",
+            "level": "3AU",
+            "translation": "N/A"
+        },
+        {
+            "id": "отмалчиваться",
+            "group": 1,
+            "count": 2.69,
+            "pos": "verb",
+            "level": "4SU",
+            "translation": "N/A"
+        },
+        {
+            "id": "умалчивать",
+            "group": 1,
+            "count": 2.69,
+            "pos": "verb",
+            "level": "4SU",
+            "translation": "N/A"
+        },
+        {
+            "id": "молчок",
+            "group": 1,
+            "count": 2.26,
+            "pos": "misc",
+            "level": "4S",
+            "translation": "N/A"
+        },
+        {
+            "id": "молчком",
+            "group": 1,
+            "count": 2.2,
+            "pos": "adv",
+            "level": "4SU",
+            "translation": "N/A"
+        },
+        {
+            "id": "втихомолку",
+            "group": 1,
+            "count": 2.08,
+            "pos": "adv",
+            "level": "4SU",
+            "translation": "N/A"
+        },
+        {
+            "id": "неумолчный",
+            "group": 1,
+            "count": 1.35,
+            "pos": "adj",
+            "level": "4SU",
+            "translation": "N/A"
+        },
+        {
+            "id": "умолчание",
+            "group": 1,
+            "count": 1.35,
+            "pos": "noun",
+            "level": "4SU",
+            "translation": "N/A"
+        },
+        {
+            "id": "замалчивать",
+            "group": 1,
+            "count": 1.1,
+            "pos": "verb",
+            "level": "4SU",
+            "translation": "N/A"
+        },
+        {
+            "id": "молчаливость",
+            "group": 1,
+            "count": 1.1,
+            "pos": "noun",
+            "level": "4SU",
+            "translation": "N/A"
+        },
+        {
+            "id": "приумолкнуть",
+            "group": 1,
+            "count": 1.04,
+            "pos": "verb",
+            "level": "4SU",
+            "translation": "N/A"
+        }
+    ],
+    "links": [
+        {
+            "source": "молчать",
+            "target": "молчать"
+        },
+        {
+            "source": "молчать",
+            "target": "молча"
+        },
+        {
+            "source": "молчать",
+            "target": "помолчать"
+        },
+        {
+            "source": "молчать",
+            "target": "замолчать"
+        },
+        {
+            "source": "молчать",
+            "target": "молчание"
+        },
+        {
+            "source": "молчать",
+            "target": "промолчать"
+        },
+        {
+            "source": "молчать",
+            "target": "молчаливый"
+        },
+        {
+            "source": "молчать",
+            "target": "смолкнуть"
+        },
+        {
+            "source": "молчать",
+            "target": "умолк"
+        },
+        {
+            "source": "молчать",
+            "target": "помалкивать"
+        },
+        {
+            "source": "молчать",
+            "target": "замолкнуть"
+        },
+        {
+            "source": "молчать",
+            "target": "умолкать"
+        },
+        {
+            "source": "молчать",
+            "target": "умолкнуть"
+        },
+        {
+            "source": "молчать",
+            "target": "молчун"
+        },
+        {
+            "source": "молчать",
+            "target": "замолкать"
+        },
+        {
+            "source": "молчать",
+            "target": "смолчать"
+        },
+        {
+            "source": "молчать",
+            "target": "молчаливо"
+        },
+        {
+            "source": "молчать",
+            "target": "смолкать"
+        },
+        {
+            "source": "молчать",
+            "target": "комсомолка"
+        },
+        {
+            "source": "молчать",
+            "target": "примолкнуть"
+        },
+        {
+            "source": "молчать",
+            "target": "умолчать"
+        },
+        {
+            "source": "молчать",
+            "target": "отмалчиваться"
+        },
+        {
+            "source": "молчать",
+            "target": "умалчивать"
+        },
+        {
+            "source": "молчать",
+            "target": "молчок"
+        },
+        {
+            "source": "молчать",
+            "target": "молчком"
+        },
+        {
+            "source": "молчать",
+            "target": "втихомолку"
+        },
+        {
+            "source": "молчать",
+            "target": "неумолчный"
+        },
+        {
+            "source": "молчать",
+            "target": "умолчание"
+        },
+        {
+            "source": "молчать",
+            "target": "замалчивать"
+        },
+        {
+            "source": "молчать",
+            "target": "молчаливость"
+        },
+        {
+            "source": "молчать",
+            "target": "приумолкнуть"
+        }
+    ]
+}
