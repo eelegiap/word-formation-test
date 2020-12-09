@@ -8,11 +8,14 @@
   <script src="https://d3js.org/d3.v4.min.js"></script>
   <!-- https://github.com/johnwalley/d3-simple-slider -->
   <script src="d3-simple-slider.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 </head>
 
 <body>
   <div class="container">
-    <div class="row">
+    <div class="row" id='title'>
       <div class="col-md-12">
         <h2>'прав/правд/правл' root family (right, truth, governing, steering).</h2>
       </div>
@@ -23,13 +26,32 @@
       </div>
     </div>
     <div class="row " id="option">
-      <div class='col-md-4'>
+      <div class='col-md-3'>
         <!-- <input name="radtolinButton" type="button" value="Linear View" onclick="RadToLin()" />
         <input name="lintoradButton" type="button" value="Radial View" onclick="LinToRad()" /> -->
         <select id="colorButton"></select>
         <select id="labelButton"></select>
       </div>
-      <div class='col-md-8'>
+      <div class='col-md-6'>
+        <span> Select levels shown: </span>
+        <input type="checkbox" id="level1" class="inputclass" checked><span style="color: #00ad43;"> Core </span>
+        <input type="checkbox" id="level2" class="inputclass" checked><span style="color: #3da5d9"> Foundations
+        </span>
+        <input type="checkbox" id="level3" class="inputclass" checked><span style="color: #69359c"> Expansions </span>
+        <input type="checkbox" id="level4" class="inputclass" checked><span style="color: #ffa41c;"> Specializations
+        </span>
+      </div>
+      <div class="col-md-6" id="colorcheckboxrow" style="display:none">
+        <p>
+          <span> Select part of speech shown: </span>
+          <input type="checkbox" id="noun" class="inputclass" checked><span style="color: #118ab2;"> Noun </span>
+          <input type="checkbox" id="adj" class="inputclass" checked><span style="color: #ffd166"> Adjective </span>
+          <input type="checkbox" id="verb" class="inputclass" checked><span style="color: #ef476f"> Verb </span>
+          <input type="checkbox" id="adv" class="inputclass" checked><span style="color: #00ad43"> Adverb </span>
+          <input type="checkbox" id="phrase" class="inputclass" checked><span style="color: #69359c"> Phrase </span>
+        </p>
+      </div>
+      <div class='col-md-3'>
         <span style="float: right;"><b>Total words displayed:</b> <span id="count"></span></span>
       </div>
     </div>
@@ -47,44 +69,36 @@
       <div class="col-md-6" class="slider-label">
         <p style="display:inline">Slide to show/hide bubbles:</p>
         <p style="display:inline; font-style: italic" id="value-step"></p>
-        <p style="display:inline"> of words shown for the root family.</p>
+        <p style="display:inline"> of words shown for the root family</p>
       </div>
-      <div class='col-md-6' id="levelcheckboxrow">
-        <p>
-          <span> Select levels shown: </span>
-          <input type="checkbox" id="level1" class="inputclass" checked><span style="color: #00ad43;"> Core </span>
-          <input type="checkbox" id="level2" class="inputclass" checked><span style="color: #3da5d9"> Foundations
-          </span>
-          <input type="checkbox" id="level3" class="inputclass" checked><span style="color: #69359c"> Expansions </span>
-          <input type="checkbox" id="level4" class="inputclass" checked><span style="color: #ffa41c;"> Specializations
-          </span>
-        </p>
-      </div>
-      <div class="col-md-6" id="colorcheckboxrow" style="display:none">
-        <p>
-          <span> Select part of speech shown: </span>
-          <input type="checkbox" id="noun" class="inputclass" checked><span style="color: #118ab2;"> Noun </span>
-          <input type="checkbox" id="adj" class="inputclass" checked><span style="color: #ffd166"> Adjective </span>
-          <input type="checkbox" id="verb" class="inputclass" checked><span style="color: #ef476f"> Verb </span>
-          <input type="checkbox" id="adv" class="inputclass" checked><span style="color: #00ad43"> Adverb </span>
-          <input type="checkbox" id="phrase" class="inputclass" checked><span style="color: #69359c"> Phrase </span>
-        </p>
+      <div class='col-md-6'>
+        <p style="display:inline">Slide to adjust radius size:</p>
+        <p style="display:inline; font-style: italic" id="value-simple"></p>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-6">
-        <div style="display: inline;" id="slider-step"></div>
+    <div class="row h-100">
+      <div class="col-md-4">
+        <div id='slider-step'></div>
+      </div>
+      <div class='col-2 my-auto'>
+        <button id='reset-step'>Reset</button>
+      </div>
+      <div class='col-4'>
+        <div id="slider-simple"></div>
+      </div>
+      <div class='col-2 my-auto'>
+        <button id='reset-simple'>Reset</button>
       </div>
     </div>
+  </div>
   </div>
 
   <svg id="chartsvg"></svg>
 </body>
-
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+  integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+  integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+  integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="vis.js"></script>

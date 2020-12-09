@@ -17,7 +17,7 @@ d3.select("#labelButton")
     .attr("value", function (d) { return d; }) // corresponding value returned by the button
 
 // set radius of circle
-const R = 14;
+const R = 18;
 
 var tooltip = d3.select("body")
     .append("div")
@@ -35,7 +35,7 @@ d3.json("prav_data.json", function (graph) {
 
     // size svg accordingly
     width = 1200
-    height = 750
+    height = 1000
     svg.attr('width', width)
     svg.attr('height', height)
 
@@ -64,28 +64,6 @@ d3.json("prav_data.json", function (graph) {
     node = svg.selectAll('.node')
         .data(graph.nodes)
         .enter().append('g')
-        .attr("class", function (d, i) {
-            if (i == 0) {
-                var level = "";
-            } else {
-                var level = "level" + d.level[0];
-            };
-            var thisclass = level + ' ' + d.pos;
-            return thisclass;
-        })
-        .attr("opacity", 1)
-        .call(d3.drag()
-            .on("start", dragstarted)
-            .on("drag", dragged)
-            .on("end", dragended));;
-
-    node.append('circle')
-        .attr('r', R)
-        .attr("fill", function (d, i) {
-            return get_level_color(d.level, i)
-        })
-        .attr("stroke", "#777")
-        .classed("circleclass", true)
         .on('mouseover.tooltip', function (d) {
             tooltip.transition()
                 .duration(300)
@@ -110,6 +88,65 @@ d3.json("prav_data.json", function (graph) {
             tooltip.style("left", (d3.event.pageX) + "px")
                 .style("top", (d3.event.pageY + 10) + "px");
         })
+        .attr("class", function (d, i) {
+            if (i == 0) {
+                var level = "";
+            } else {
+                var level = "level" + d.level[0];
+            };
+            var thisclass = level + ' ' + d.pos;
+            return thisclass;
+        })
+        .attr("opacity", 1)
+        .call(d3.drag()
+            .on("start", dragstarted)
+            .on("drag", dragged)
+            .on("end", dragended));;
+
+    node.append('circle')
+        .attr('r', R)
+        .attr("fill", function (d, i) {
+            return get_level_color(d.level, i)
+        })
+        .attr('stroke-width', function (d, i) {
+            if (i == 0) {
+                return '1px';
+            } else {
+                return '35px';
+            }
+        })
+        .attr("stroke", function (d, i) {
+            if (i == 0) {
+                return '#777';
+            } else {
+                return 'transparent';
+            }
+        })
+        .classed("circleclass", true)
+        // .on('mouseover.tooltip', function (d) {
+        //     tooltip.transition()
+        //         .duration(300)
+        //         .style("opacity", .8);
+        //     tooltip.html("<b>Word: </b>" + d.id + "<br>" +
+        //         "<b>Translation: </b>" + d.translation + "<br>" +
+        //         "<b>POS: </b>" + d.pos + "<br>" +
+        //         "<b>Count: </b>" + d.count + "<br>" +
+        //         "<b>Level: </b>" + d.level)
+        //         .style("left", (d3.event.pageX) + "px")
+        //         .style("top", (d3.event.pageY + 10) + "px")
+        //         .style("padding", "7px");
+        // })
+        // .on('mouseover.fade', fade(0.1))
+        // .on("mouseout.tooltip", function () {
+        //     tooltip.transition()
+        //         .duration(100)
+        //         .style("opacity", 0);
+        // })
+        // .on('mouseout.fade', fade(1))
+        // .on("mousemove", function () {
+        //     tooltip.style("left", (d3.event.pageX) + "px")
+        //         .style("top", (d3.event.pageY + 10) + "px");
+        // })
         .on('dblclick', releasenode)
 
     node.append('text')
@@ -177,8 +214,50 @@ d3.json("prav_data.json", function (graph) {
                 }
             });
     };
+    // radius slider
+    var sliderSimple = d3
+        .sliderBottom()
+        .min(0)
+        .max(2)
+        .width(300)
+        .tickFormat(d3.format('.0%'))
+        .ticks(5)
+        .default(1)
+        .on('onchange', val => {
+            d3.select('p#value-simple').text(d3.format('.0%')(val));
+            d3.selectAll("circle")
+                .transition()
+                .duration(750)
+                .attr('r', val * R);
+            simulation
+                .force('link', d3.forceLink().id(d => d.id)
+                    .distance(function (d, i) {
+                        return (val* (3 / (normalized_values[i] ** 1.2 + .01)));
+                    }))
+                .force('charge', d3.forceManyBody().strength(-300))
+                .force('center', d3.forceCenter(width / 2, height / 2))
+                .on('tick', ticked)
+                .force('link')
+                .links(graph.links);
+            console.log(node.select('text'));
+            node.select('text').style('font-size', 14 * val + 'px')
+        });
 
-    // Step
+    var gSimple = d3
+        .select('div#slider-simple')
+        .append('svg')
+        .attr('width', 500)
+        .attr('height', 100)
+        .append('g')
+        .attr('transform', 'translate(30,30)');
+
+    gSimple.call(sliderSimple);
+
+    d3.select('p#value-simple').text(d3.format('.0%')(sliderSimple.value()));
+    d3.select("#reset-simple").on("click", () => sliderSimple.value(1));
+
+
+    // show/hide slider
     var sliderStep = d3
         .sliderBottom()
         .min(0)
@@ -200,13 +279,13 @@ d3.json("prav_data.json", function (graph) {
     function valueChange(value) {
         var counter = 0
         if (value != 1) {
-            d3.selectAll('.inputclass').each(function(d, i) {
+            d3.selectAll('.inputclass').each(function (d, i) {
                 d3.select(this).node().checked = true;
                 d3.select(this).node().disabled = true;
             });
         }
         else {
-            d3.selectAll('.inputclass').each(function(d, i) {
+            d3.selectAll('.inputclass').each(function (d, i) {
                 d3.select(this).node().checked = true;
                 d3.select(this).node().disabled = false;
             });
@@ -228,13 +307,15 @@ d3.json("prav_data.json", function (graph) {
     var gStep = d3
         .select('div#slider-step')
         .append('svg')
-        .attr('width', 500)
+        .attr('width', 400)
         .attr('height', 100)
         .append('g')
         .attr('transform', 'translate(30,30)');
 
     gStep.call(sliderStep);
     d3.select('p#value-step').text(d3.format('.0%')(sliderStep.value()));
+
+    d3.select("#reset-step").on("click", () => sliderStep.value(1));
 
     // function to change node color
     // https://www.d3-graph-gallery.com/graph/line_select.html
