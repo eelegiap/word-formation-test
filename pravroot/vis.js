@@ -232,13 +232,14 @@ d3.json("prav_data.json", function (graph) {
             simulation
                 .force('link', d3.forceLink().id(d => d.id)
                     .distance(function (d, i) {
-                        return (val* (3 / (normalized_values[i] ** 1.2 + .01)));
+                        return (val * (3 / (normalized_values[i] ** 1.2 + .01)));
                     }))
                 .force('charge', d3.forceManyBody().strength(-300))
                 .force('center', d3.forceCenter(width / 2, height / 2))
                 .on('tick', ticked)
                 .force('link')
                 .links(graph.links);
+            simulation.alphaTarget(0.3).restart();
             console.log(node.select('text'));
             node.select('text').style('font-size', 14 * val + 'px')
         });
@@ -254,8 +255,9 @@ d3.json("prav_data.json", function (graph) {
     gSimple.call(sliderSimple);
 
     d3.select('p#value-simple').text(d3.format('.0%')(sliderSimple.value()));
-    d3.select("#reset-simple").on("click", () => sliderSimple.value(1));
-
+    d3.select("#reset-simple").on("click", function () {
+        sliderSimple.value(1); resetSim();
+    });
 
     // show/hide slider
     var sliderStep = d3
@@ -315,8 +317,24 @@ d3.json("prav_data.json", function (graph) {
     gStep.call(sliderStep);
     d3.select('p#value-step').text(d3.format('.0%')(sliderStep.value()));
 
-    d3.select("#reset-step").on("click", () => sliderStep.value(1));
+    d3.select("#reset-step").on("click", function () {
+        sliderStep.value(1); resetSim();
+    });
 
+    function resetSim() {
+        simulation
+            .force('link', d3.forceLink().id(d => d.id)
+                .distance(function (d, i) {
+                    return ((3 / (normalized_values[i] ** 1.2 + .01)));
+                }))
+            .force('charge', d3.forceManyBody().strength(-300))
+            .force('center', d3.forceCenter(width / 2, height / 2))
+            .alpha(1)
+            .on('tick', ticked)
+            .force('link')
+            .links(graph.links);
+            simulation.alphaTarget(0.3).restart();
+    }
     // function to change node color
     // https://www.d3-graph-gallery.com/graph/line_select.html
     function colorUpdate(selectedGroup) {
