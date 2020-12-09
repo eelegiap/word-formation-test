@@ -318,7 +318,7 @@ d3.json("prav_data.json", function (graph) {
     d3.select('p#value-step').text(d3.format('.0%')(sliderStep.value()));
 
     d3.select("#reset-step").on("click", function () {
-        sliderStep.value(1); resetSim();
+        sliderStep.value(1);
     });
 
     function resetSim() {
